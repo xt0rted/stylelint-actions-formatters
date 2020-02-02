@@ -9,4 +9,8 @@ This package should be used with the [stylelint-problem-matcher](https://github.
  stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters/stringFormatter.js
 ```
 
+```console
+ stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters/verboseFormatter.js
+```
+
 > Note: If you're not running on GitHub Actions then these reporters will function the same as the ones that ship with Stylelint.
