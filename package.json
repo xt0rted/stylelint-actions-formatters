@@ -10,6 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/xt0rted/stylelint-actions-formatters.git"
   },
+  "keywords": [
+    "actions",
+    "formatter",
+    "github",
+    "reporter",
+    "stylelint"
+  ],
   "author": "xt0rted",
   "license": "MIT",
   "bugs": {
