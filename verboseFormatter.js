@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/b66bea950873a068d3b9fc8bd2279c762a3134ee/lib/formatters/verboseFormatter.js
+ * https://github.com/stylelint/stylelint/blob/c9741e1e6dd01c987bd8f139c8359984dc4340f4/lib/formatters/verboseFormatter.js
  */
 'use strict';
 
@@ -51,14 +51,15 @@ module.exports = function(results) {
 
 	output += chalk.underline(`\n${warnings.length} ${problemWord} found\n`);
 
-	_.forOwn(warningsBySeverity, (warningList, severityLevel) => {
+	for (const [severityLevel, warningList] of Object.entries(warningsBySeverity)) {
 		const warningsByRule = _.groupBy(warningList, 'rule');
 
 		output += ` severity level "${severityLevel}": ${warningList.length}\n`;
-		_.forOwn(warningsByRule, (list, rule) => {
-			output += chalk.dim(`  ${rule}: ${list.length}\n`);
-		});
-	});
 
-	return output + '\n';
+		for (const [rule, list] of Object.entries(warningsByRule)) {
+			output += chalk.dim(`  ${rule}: ${list.length}\n`);
+		}
+	}
+
+	return `${output}\n`;
 };

@@ -1,6 +1,6 @@
 /**
- * https://github.com/stylelint/stylelint/blob/b66bea950873a068d3b9fc8bd2279c762a3134ee/lib/formatters/stringFormatter.js
- **/
+ * https://github.com/stylelint/stylelint/blob/c9741e1e6dd01c987bd8f139c8359984dc4340f4/lib/formatters/stringFormatter.js
+ */
 'use strict';
 
 const _ = require('lodash');
@@ -42,7 +42,7 @@ function deprecationsFormatter(results) {
 			output += chalk.dim.underline(warning.reference);
 		}
 
-		return output + '\n';
+		return `${output}\n`;
 	}, '\n');
 }
 
@@ -54,13 +54,13 @@ function invalidOptionsFormatter(results) {
 	const allInvalidOptionWarnings = _.flatMap(results, (r) =>
 		r.invalidOptionWarnings.map((w) => w.text),
 	);
-	const uniqueInvalidOptionWarnings = _.uniq(allInvalidOptionWarnings);
+	const uniqueInvalidOptionWarnings = [...new Set(allInvalidOptionWarnings)];
 
 	return uniqueInvalidOptionWarnings.reduce((output, warning) => {
 		output += chalk.red('Invalid Option: ');
 		output += warning;
 
-		return output + '\n';
+		return `${output}\n`;
 	}, '\n');
 }
 
@@ -69,7 +69,7 @@ function invalidOptionsFormatter(results) {
  * @return {string}
  */
 function logFrom(fromValue) {
-	if (fromValue.charAt(0) === '<') return fromValue;
+	if (fromValue.startsWith('<')) return fromValue;
 
 	return path
 		.relative(process.env.GITHUB_WORKSPACE || process.cwd(), fromValue)
@@ -87,7 +87,7 @@ function getMessageWidth(columnWidths) {
 	}
 
 	const availableWidth = process.stdout.columns < 80 ? 80 : process.stdout.columns;
-	const fullWidth = _.sum(_.values(columnWidths));
+	const fullWidth = Object.values(columnWidths).reduce((a, b) => a + b);
 
 	// If there is no reason to wrap the text, we won't align the last column to the right
 	if (availableWidth > fullWidth + MARGIN_WIDTHS) {
@@ -123,20 +123,20 @@ function formatter(messages, source) {
 	 * @param {[string, string, string, string, string]} columns
 	 * @return {[string, string, string, string, string]}
 	 */
-	const calculateWidths = function(columns) {
-		_.forOwn(columns, (value, key) => {
+	function calculateWidths(columns) {
+		for (const [key, value] of Object.entries(columns)) {
 			const normalisedValue = value ? value.toString() : value;
 
 			columnWidths[key] = Math.max(columnWidths[key], stringWidth(normalisedValue));
-		});
+		}
 
 		return columns;
-	};
+	}
 
 	let output = '\n';
 
 	if (source) {
-		output += chalk.underline(logFrom(source)) + '\n';
+		output += `${chalk.underline(logFrom(source))}\n`;
 	}
 
 	const cleanedMessages = orderedMessages.map((message) => {
@@ -155,6 +155,7 @@ function formatter(messages, source) {
 				// Remove all control characters (newline, tab and etc)
 				.replace(/[\x01-\x1A]+/g, ' ') // eslint-disable-line no-control-regex
 				.replace(/\.$/, '')
+				// eslint-disable-next-line prefer-template
 				.replace(new RegExp(_.escapeRegExp('(' + message.rule + ')') + '$'), ''),
 			chalk.dim(message.rule || ''),
 		];
@@ -190,7 +191,7 @@ function formatter(messages, source) {
 			 * @param {string} el
 			 * @returns {string}
 			 */
-			(el) => el.replace(/(\d+)\s+(\d+)/, (m, p1, p2) => chalk.dim(p1 + ':' + p2)),
+			(el) => el.replace(/(\d+)\s+(\d+)/, (m, p1, p2) => chalk.dim(`${p1}:${p2}`)),
 		)
 		.join('\n');
 
@@ -229,7 +230,7 @@ module.exports = function(results) {
 	output = output.trim();
 
 	if (output !== '') {
-		output = '\n' + output + '\n\n';
+		output = `\n${output}\n\n`;
 	}
 
 	return output;
