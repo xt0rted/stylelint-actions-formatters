@@ -5,9 +5,13 @@ This package should be used with the [stylelint-problem-matcher](https://github.
 
 ## Usage
 
+### String formatter
+
 ```console
- stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters/stringFormatter.js
+ stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters
 ```
+
+### Verbose formatter
 
 ```console
  stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters/verboseFormatter.js
