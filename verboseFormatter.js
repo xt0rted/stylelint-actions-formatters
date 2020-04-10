@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/c9741e1e6dd01c987bd8f139c8359984dc4340f4/lib/formatters/verboseFormatter.js
+ * https://github.com/stylelint/stylelint/blob/845c373e464f3ccd3f00638a8c1aa55e9a354294/lib/formatters/verboseFormatter.js
  */
 'use strict';
 
@@ -11,7 +11,7 @@ const stringFormatter = require('./stringFormatter');
  * @param {import('stylelint').StylelintResult[]} results
  * @returns {string}
  */
-module.exports = function(results) {
+module.exports = function (results) {
 	let output = stringFormatter(results);
 
 	if (output === '') {

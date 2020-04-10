@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/c9741e1e6dd01c987bd8f139c8359984dc4340f4/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/845c373e464f3ccd3f00638a8c1aa55e9a354294/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -107,6 +107,7 @@ function formatter(messages, source) {
 
 	const orderedMessages = _.sortBy(
 		messages,
+		// eslint-disable-next-line no-confusing-arrow
 		(m) => (m.line ? 2 : 1), // positionless first
 		(m) => m.line,
 		(m) => m.column,
@@ -202,7 +203,7 @@ function formatter(messages, source) {
  * @param {import('stylelint').StylelintResult[]} results
  * @returns {string}
  */
-module.exports = function(results) {
+module.exports = function (results) {
 	let output = invalidOptionsFormatter(results);
 
 	output += deprecationsFormatter(results);
