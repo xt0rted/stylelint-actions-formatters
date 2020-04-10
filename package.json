@@ -31,5 +31,8 @@
     "postcss-reporter": "^6.0.1",
     "string-width": "^4.2.0",
     "table": "^5.4.6"
+  },
+  "peerDependencies": {
+    "stylelint": "^13.3.1"
   }
 }
