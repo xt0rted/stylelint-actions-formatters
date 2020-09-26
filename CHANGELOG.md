@@ -7,6 +7,7 @@
 - Bumped `lodash` to 4.17.20
 - Bumped `log-symbols` to 4.0.0
 - Bumped `table` to 6.0.1
+- Removed `postcss-reporter` dependency
 
 ## Version 0.1.0
 
