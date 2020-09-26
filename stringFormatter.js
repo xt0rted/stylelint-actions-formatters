@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/c9741e1e6dd01c987bd8f139c8359984dc4340f4/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/2b8215b2eb1ced1c8cafb4de523789f525038906/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -8,9 +8,7 @@ const chalk = require('chalk');
 const path = require('path');
 const stringWidth = require('string-width');
 const symbols = require('log-symbols');
-const utils = require('postcss-reporter/lib/util');
-/** @type {import('table')} */
-let table;
+const table = require('table');
 
 const MARGIN_WIDTHS = 9;
 
@@ -107,6 +105,7 @@ function formatter(messages, source) {
 
 	const orderedMessages = _.sortBy(
 		messages,
+		// eslint-disable-next-line no-confusing-arrow
 		(m) => (m.line ? 2 : 1), // positionless first
 		(m) => m.line,
 		(m) => m.column,
@@ -140,20 +139,20 @@ function formatter(messages, source) {
 	}
 
 	const cleanedMessages = orderedMessages.map((message) => {
-		const location = utils.getLocation(message);
+		const { line, column } = message;
 		const severity = /** @type {keyof import('log-symbols')} */ (message.severity);
 		/**
 		 * @type {[string, string, string, string, string]}
 		 */
 		const row = [
-			location.line ? location.line.toString() : '',
-			location.column ? location.column.toString() : '',
+			line ? line.toString() : '',
+			column ? column.toString() : '',
 			symbols[severity]
 				? chalk[/** @type {'blue' | 'red' | 'yellow'} */ (levelColors[severity])](symbols[severity])
 				: severity,
 			message.text
 				// Remove all control characters (newline, tab and etc)
-				.replace(/[\x01-\x1A]+/g, ' ') // eslint-disable-line no-control-regex
+				.replace(/[\u0001-\u001A]+/g, ' ') // eslint-disable-line no-control-regex
 				.replace(/\.$/, '')
 				// eslint-disable-next-line prefer-template
 				.replace(new RegExp(_.escapeRegExp('(' + message.rule + ')') + '$'), ''),
@@ -164,10 +163,6 @@ function formatter(messages, source) {
 
 		return row;
 	});
-
-	if (!table) {
-		table = require('table');
-	}
 
 	output += table
 		.table(cleanedMessages, {
@@ -199,10 +194,9 @@ function formatter(messages, source) {
 }
 
 /**
- * @param {import('stylelint').StylelintResult[]} results
- * @returns {string}
+ * @type {import('stylelint').Formatter}
  */
-module.exports = function(results) {
+module.exports = function (results) {
 	let output = invalidOptionsFormatter(results);
 
 	output += deprecationsFormatter(results);
