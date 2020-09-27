@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/xt0rted/stylelint-actions-formatters.git"
   },
+  "funding": {
+    "url": "https://github.com/sponsors/xt0rted"
+  },
   "keywords": [
     "actions",
     "formatter",
