@@ -1,5 +1,6 @@
 # stylelint-actions-formatters
 
+[![CI](https://github.com/xt0rted/stylelint-actions-formatters/workflows/CI/badge.svg)](https://github.com/xt0rted/stylelint-actions-formatters/actions?query=workflow%3ACI)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=xt0rted/stylelint-actions-formatters)](https://dependabot.com)
 [![npm version](https://img.shields.io/npm/v/stylelint-actions-formatters)](https://www.npmjs.com/package/stylelint-actions-formatters)
 
