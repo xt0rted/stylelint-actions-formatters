@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stringFormatter using GITHUB_WORKSPACE condenses deprecations and invalid option warnings 1`] = `
+"Invalid Option: Unexpected option for baz
+
+Deprecation Warning: Deprecated foo See: bar"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE handles empty messages 1`] = `
+"to/file.css
+ 1:1  ×     bar"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE output warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
+"to/file.css
+ 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
+         very very very very very very long foo"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings 1`] = `
+"to/file.css
+ 1:1  ×  Unexpected foo  bar"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings without stdout \`TTY\` 1`] = `
+"to/file.css
+ 1:1  ×  Unexpected foo  bar"
+`;
+
+exports[`stringFormatter using cwd condenses deprecations and invalid option warnings 1`] = `
+"Invalid Option: Unexpected option for baz
+
+Deprecation Warning: Deprecated foo See: bar"
+`;
+
+exports[`stringFormatter using cwd handles empty messages 1`] = `
+"path/to/file.css
+ 1:1  ×     bar"
+`;
+
+exports[`stringFormatter using cwd output warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
+"path/to/file.css
+ 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
+         very very very very very very long foo"
+`;
+
+exports[`stringFormatter using cwd outputs warnings 1`] = `
+"path/to/file.css
+ 1:1  ×  Unexpected foo  bar"
+`;
+
+exports[`stringFormatter using cwd outputs warnings without stdout \`TTY\` 1`] = `
+"path/to/file.css
+ 1:1  ×  Unexpected foo  bar"
+`;
