@@ -10,6 +10,9 @@ trim_trailing_whitespace = true
 
 [*.js]
 end_of_line = lf
+
+[*Formatter.js]
+end_of_line = lf
 indent_style = tab
 indent_size = 1
 tab_width = 2

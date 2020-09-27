@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs 0 stdout column 1`] = `
+"to/file.css
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs less than 80 stdout column 1`] = `
+"to/file.css
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs lineless syntax error 1`] = `
+"to/file.css
+      ×  Unexpected foo  SyntaxError
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  SyntaxError: 1"
+`;
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs no warnings 1`] = `
+"1 source checked
+ /test-project/path/to/file.css
+
+0 problems found"
+`;
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs one ignored file 1`] = `
+"0 of 1 source checked
+ file.css (ignored)
+
+0 problems found"
+`;
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs one warnings (of severity 'error') 1`] = `
+"to/file.css
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs two of the same warnings of 'error' and one of 'warning' across two files 1`] = `
+"to/file.css
+ 1:2  ×  Unexpected foo  bar
+ 2:3  ×  Unexpected foo  bar
+
+to/file2.css
+ 3:1  ‼  Expected cat  baz
+
+2 sources checked
+ /test-project/path/to/file.css
+ /test-project/path/to/file2.css
+
+3 problems found
+ severity level \\"error\\": 2
+  bar: 2
+ severity level \\"warning\\": 1
+  baz: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs 0 stdout column 1`] = `
+"path/to/file.css
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs less than 80 stdout column 1`] = `
+"path/to/file.css
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs lineless syntax error 1`] = `
+"path/to/file.css
+      ×  Unexpected foo  SyntaxError
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  SyntaxError: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs no warnings 1`] = `
+"1 source checked
+ /test-project/path/to/file.css
+
+0 problems found"
+`;
+
+exports[`verboseFormatter using cwd outputs one ignored file 1`] = `
+"0 of 1 source checked
+ file.css (ignored)
+
+0 problems found"
+`;
+
+exports[`verboseFormatter using cwd outputs one warnings (of severity 'error') 1`] = `
+"path/to/file.css
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs two of the same warnings of 'error' and one of 'warning' across two files 1`] = `
+"path/to/file.css
+ 1:2  ×  Unexpected foo  bar
+ 2:3  ×  Unexpected foo  bar
+
+path/to/file2.css
+ 3:1  ‼  Expected cat  baz
+
+2 sources checked
+ /test-project/path/to/file.css
+ /test-project/path/to/file2.css
+
+3 problems found
+ severity level \\"error\\": 2
+  bar: 2
+ severity level \\"warning\\": 1
+  baz: 1"
+`;
