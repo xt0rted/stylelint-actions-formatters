@@ -28,7 +28,7 @@
   "homepage": "https://github.com/xt0rted/stylelint-actions-formatters#readme",
   "devDependencies": {
     "jest": "^26.5.3",
-    "jest-circus": "^26.5.3"
+    "jest-circus": "^26.6.0"
   },
   "dependencies": {
     "chalk": "^4.1.0",
