@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "log-symbols": "^4.0.0",
     "string-width": "^4.2.0",
     "table": "^6.0.3"
