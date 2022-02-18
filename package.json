@@ -36,5 +36,8 @@
     "log-symbols": "^4.0.0",
     "string-width": "^4.2.0",
     "table": "^6.0.3"
+  },
+  "peerDependencies": {
+    "stylelint": "^13.7.2"
   }
 }
