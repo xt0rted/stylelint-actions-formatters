@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.0.1/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.1.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -245,15 +245,14 @@ module.exports = function (results) {
 	output = results.reduce((accum, result) => {
 		// Treat parseErrors as warnings
 		if (result.parseErrors) {
-			result.parseErrors.forEach((error) =>
+			for (const error of result.parseErrors)
 				result.warnings.push({
 					line: error.line,
 					column: error.column,
 					rule: error.stylelintType,
 					severity: 'error',
 					text: `${error.text} (${error.stylelintType})`,
-				}),
-			);
+				});
 		}
 
 		accum += formatter(result.warnings, result.source || '');

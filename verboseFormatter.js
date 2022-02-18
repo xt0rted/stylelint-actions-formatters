@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.0.1/lib/formatters/verboseFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.1.0/lib/formatters/verboseFormatter.js
  */
 'use strict';
 
@@ -26,7 +26,8 @@ module.exports = function (results) {
 		: results.length;
 
 	output += underline(`${checkedDisplay} ${sourceWord} checked\n`);
-	results.forEach((result) => {
+
+	for (const result of results) {
 		let formatting = green;
 
 		if (result.errored) {
@@ -44,7 +45,7 @@ module.exports = function (results) {
 		}
 
 		output += formatting(` ${sourceText}\n`);
-	});
+	}
 
 	const warnings = results.flatMap((r) => r.warnings);
 	const warningsBySeverity = groupBy(warnings, (w) => w.severity);
