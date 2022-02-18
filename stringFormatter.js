@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.0.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.0.1/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -227,7 +227,7 @@ function formatter(messages, source) {
 			 * @param {string} el
 			 * @returns {string}
 			 */
-			(el) => el.replace(/(\d+)\s+(\d+)/, (m, p1, p2) => dim(`${p1}:${p2}`)),
+			(el) => el.replace(/(\d+)\s+(\d+)/, (_m, p1, p2) => dim(`${p1}:${p2}`)),
 		)
 		.join('\n');
 

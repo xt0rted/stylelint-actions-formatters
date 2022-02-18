@@ -1,5 +1,10 @@
 # Changelog
 
+## [14.0.1]
+
+- Synced code with [stylelint 14.0.1](https://github.com/stylelint/stylelint/releases/tag/14.0.1)
+- Bumped `string-width` from 4.2.2 to 4.2.3
+
 ## [14.0.0]
 
 - Synced code with [stylelint 14.0.0](https://github.com/stylelint/stylelint/releases/tag/14.0.0)
@@ -55,6 +60,7 @@
 
 - Initial release
 
+[14.0.1]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.0.0...v14.0.1
 [14.0.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.13.1...v14.0.0
 [13.13.1]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.13.0...v13.13.1
 [13.13.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.12.0...v13.13.0
