@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/13.9.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/13.10.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
