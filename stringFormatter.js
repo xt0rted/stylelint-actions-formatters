@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/2b8215b2eb1ced1c8cafb4de523789f525038906/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/13.8.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -201,6 +201,8 @@ module.exports = function (results) {
 
 	output += deprecationsFormatter(results);
 
+	// TODO: Issue #4985
+	// eslint-disable-next-line no-shadow
 	output = results.reduce((output, result) => {
 		// Treat parseErrors as warnings
 		if (result.parseErrors) {
