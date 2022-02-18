@@ -1,6 +1,8 @@
 # Changelog
 
-## Unreleased
+## Version 13.8.0
+
+- Synced code with [stylelint 13.8.0](https://github.com/stylelint/stylelint/releases/tag/13.8.0)
 
 ## Version 13.7.2
 
