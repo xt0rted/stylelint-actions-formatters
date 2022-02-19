@@ -1,10 +1,10 @@
 # Changelog
 
-## Version 13.8.0
+## [13.8.0]
 
 - Synced code with [stylelint 13.8.0](https://github.com/stylelint/stylelint/releases/tag/13.8.0)
 
-## Version 13.7.2
+## [13.7.2]
 
 - Synced code with [stylelint 13.7.2](https://github.com/stylelint/stylelint/releases/tag/13.7.2)
 - Bumped `chalk` to 4.1.0
@@ -13,6 +13,10 @@
 - Bumped `table` to 6.0.1
 - Removed `postcss-reporter` dependency
 
-## Version 0.1.0
+## [0.1.0]
 
 - Initial release
+
+[13.8.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.7.2...v13.8.0
+[13.7.2]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v0.1.0...v13.7.2
+[0.1.0]: https://github.com/xt0rted/stylelint-actions-formatters/releases/tag/v0.1.0
