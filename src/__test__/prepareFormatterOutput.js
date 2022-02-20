@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/__tests__/prepareFormatterOutput.js
+ * https://github.com/stylelint/stylelint/blob/14.4.0/lib/formatters/__tests__/prepareFormatterOutput.js
  */
 const stripAnsi = require('strip-ansi');
 
