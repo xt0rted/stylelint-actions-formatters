@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.1.0/lib/formatters/verboseFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/verboseFormatter.js
  */
 'use strict';
 
@@ -12,8 +12,8 @@ const { underline, red, yellow, dim, green } = require('picocolors');
 /**
  * @type {Formatter}
  */
-module.exports = function (results) {
-	let output = stringFormatter(results);
+module.exports = function (results, returnValue) {
+	let output = stringFormatter(results, returnValue);
 
 	if (output === '') {
 		output = '\n';

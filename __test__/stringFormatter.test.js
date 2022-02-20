@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/0eaf3d456cdecdd698d5e4a9edc54d205d47d907/lib/formatters/__tests__/stringFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/__tests__/stringFormatter.test.js
  */
 'use strict';
 
@@ -16,6 +16,7 @@ describe('stringFormatter', () => {
     actualTTY = process.stdout.isTTY;
     actualColumns = process.stdout.columns;
 
+    // This is needed when running on github actions
     delete process.env.GITHUB_WORKSPACE;
   });
 
@@ -69,6 +70,30 @@ describe('stringFormatter', () => {
               rule: 'bar',
               severity: 'error',
               text: 'Unexpected foo',
+            },
+          ],
+          deprecations: [],
+          invalidOptionWarnings: [],
+        },
+      ];
+
+      const output = prepareFormatterOutput(results, stringFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('removes rule name from warning text', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+          errored: true,
+          warnings: [
+            {
+              line: 1,
+              column: 1,
+              rule: 'rule-name',
+              severity: 'error',
+              text: 'Unexpected foo (rule-name)',
             },
           ],
           deprecations: [],

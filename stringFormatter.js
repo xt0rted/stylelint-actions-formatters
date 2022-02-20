@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.1.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -82,15 +82,13 @@ function invalidOptionsFormatter(results) {
 
 /**
  * @param {string} fromValue
+ * @param {string} cwd
  * @return {string}
  */
-function logFrom(fromValue) {
+function logFrom(fromValue, cwd) {
 	if (fromValue.startsWith('<')) return fromValue;
 
-	return path
-		.relative(process.env.GITHUB_WORKSPACE || process.cwd(), fromValue)
-		.split(path.sep)
-		.join('/');
+	return path.relative(cwd, fromValue).split(path.sep).join('/');
 }
 
 /**
@@ -116,9 +114,10 @@ function getMessageWidth(columnWidths) {
 /**
  * @param {import('stylelint').Warning[]} messages
  * @param {string} source
+ * @param {string} cwd
  * @return {string}
  */
-function formatter(messages, source) {
+function formatter(messages, source, cwd) {
 	if (!messages.length) return '';
 
 	const orderedMessages = [...messages].sort((a, b) => {
@@ -163,7 +162,7 @@ function formatter(messages, source) {
 	let output = '\n';
 
 	if (source) {
-		output += `${underline(logFrom(source))}\n`;
+		output += `${underline(logFrom(source, cwd))}\n`;
 	}
 
 	/**
@@ -237,7 +236,7 @@ function formatter(messages, source) {
 /**
  * @type {import('stylelint').Formatter}
  */
-module.exports = function (results) {
+module.exports = function (results, returnValue) {
 	let output = invalidOptionsFormatter(results);
 
 	output += deprecationsFormatter(results);
@@ -255,7 +254,11 @@ module.exports = function (results) {
 				});
 		}
 
-		accum += formatter(result.warnings, result.source || '');
+		accum += formatter(
+			result.warnings,
+			result.source || '',
+			(returnValue && returnValue.cwd) || process.env.GITHUB_WORKSPACE || process.cwd(),
+		);
 
 		return accum;
 	}, output);

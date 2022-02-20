@@ -27,6 +27,11 @@ exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings without stdout 
  1:1  ×  Unexpected foo  bar"
 `;
 
+exports[`stringFormatter using GITHUB_WORKSPACE removes rule name from warning text 1`] = `
+"to/file.css
+ 1:1  ×  Unexpected foo  rule-name"
+`;
+
 exports[`stringFormatter using cwd condenses deprecations and invalid option warnings 1`] = `
 "Invalid Option: Unexpected option for baz
 
@@ -52,4 +57,9 @@ exports[`stringFormatter using cwd outputs warnings 1`] = `
 exports[`stringFormatter using cwd outputs warnings without stdout \`TTY\` 1`] = `
 "path/to/file.css
  1:1  ×  Unexpected foo  bar"
+`;
+
+exports[`stringFormatter using cwd removes rule name from warning text 1`] = `
+"path/to/file.css
+ 1:1  ×  Unexpected foo  rule-name"
 `;

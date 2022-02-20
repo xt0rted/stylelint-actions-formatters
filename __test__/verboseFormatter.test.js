@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/0eaf3d456cdecdd698d5e4a9edc54d205d47d907/lib/formatters/__tests__/verboseFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/__tests__/verboseFormatter.test.js
  */
 'use strict';
 
@@ -10,6 +10,7 @@ describe('verboseFormatter', () => {
   beforeAll(() => {
     jest.spyOn(process, 'cwd').mockReturnValue('/test-project');
 
+    // This is needed when running on github actions
     delete process.env.GITHUB_WORKSPACE;
   });
 
