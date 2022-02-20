@@ -1,5 +1,9 @@
 # Changelog
 
+## [14.5.0] - 2022-02-23
+
+- Synced code with [stylelint 14.5.0](https://github.com/stylelint/stylelint/releases/tag/14.5.0)
+
 ## [14.4.0] - 2022-02-23
 
 - Synced code with [stylelint 14.4.0](https://github.com/stylelint/stylelint/releases/tag/14.4.0)
@@ -84,6 +88,7 @@ This version wasn't published to NPM due to the `package.json` not being updated
 
 - Initial release
 
+[14.5.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.4.0...v14.5.0
 [14.4.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.3.0...v14.4.0
 [14.3.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.2.0...v14.3.0
 [14.2.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.1.0...v14.2.0
