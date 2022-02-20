@@ -1,5 +1,11 @@
 # Changelog
 
+## [14.3.0] - 2022-02-20
+
+- Synced code with [stylelint 14.3.0](https://github.com/stylelint/stylelint/releases/tag/14.3.0)
+- Bumped `table` from 6.7.5 to 6.8.0
+- Moved package contents from `/` to `/src`
+
 ## [14.2.0] - 2022-02-20 [YANKED]
 
 ⚠️ The formatters were refactored in this version and the `GITHUB_WORKSPACE` environment variable was put in the wrong location. This resulted in the file paths resolving incorrectly when running on GitHub Actions. You should use v14.1.0 or v14.3.0 instead.
@@ -74,6 +80,7 @@ This version wasn't published to NPM due to the `package.json` not being updated
 
 - Initial release
 
+[14.3.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.2.0...v14.3.0
 [14.2.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.1.0...v14.2.0
 [14.1.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.0.1...v14.1.0
 [14.0.1]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.0.0...v14.0.1

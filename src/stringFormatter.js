@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.3.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -7,6 +7,7 @@ const path = require('path');
 const stringWidth = require('string-width');
 const table = require('table');
 const { yellow, dim, underline, blue, red, green } = require('picocolors');
+const terminalLink = require('./terminalLink');
 
 const MARGIN_WIDTHS = 9;
 
@@ -86,9 +87,13 @@ function invalidOptionsFormatter(results) {
  * @return {string}
  */
 function logFrom(fromValue, cwd) {
-	if (fromValue.startsWith('<')) return fromValue;
+	if (fromValue.startsWith('<')) {
+		return underline(fromValue);
+	}
 
-	return path.relative(cwd, fromValue).split(path.sep).join('/');
+	const filePath = path.relative(cwd, fromValue).split(path.sep).join('/');
+
+	return terminalLink(filePath, `file://${fromValue}`);
 }
 
 /**
@@ -162,7 +167,7 @@ function formatter(messages, source, cwd) {
 	let output = '\n';
 
 	if (source) {
-		output += `${underline(logFrom(source, cwd))}\n`;
+		output += `${logFrom(source, cwd)}\n`;
 	}
 
 	/**

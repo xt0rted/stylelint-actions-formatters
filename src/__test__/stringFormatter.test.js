@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/__tests__/stringFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.3.0/lib/formatters/__tests__/stringFormatter.test.js
  */
 'use strict';
 
@@ -147,8 +147,7 @@ describe('stringFormatter', () => {
               column: 1,
               rule: 'bar-very-very-very-very-very-long',
               severity: 'error',
-              text:
-                'Unexpected very very very very very very very very very very very very very long foo',
+              text: 'Unexpected very very very very very very very very very very very very very long foo',
             },
           ],
           deprecations: [],

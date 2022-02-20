@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.2.0/lib/formatters/__tests__/verboseFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.3.0/lib/formatters/__tests__/verboseFormatter.test.js
  */
 'use strict';
 
@@ -211,6 +211,85 @@ describe('verboseFormatter', () => {
       ];
 
       const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs input CSS', () => {
+      const results = [
+        {
+          source: '<input css>',
+          errored: true,
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'bar',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+          ],
+          deprecations: [],
+          invalidOptionWarnings: [],
+        },
+      ];
+
+      const output = prepareFormatterOutput(results, verboseFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs plugin rule warnings', () => {
+      const results = [
+        {
+          source: '/test-project/path/file.css',
+          errored: true,
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'plugin/bar',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+          ],
+          deprecations: [],
+          invalidOptionWarnings: [],
+        },
+      ];
+
+      const output = prepareFormatterOutput(results, verboseFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs rule warnings with metadata', () => {
+      const results = [
+        {
+          source: '/test-project/path/file.css',
+          errored: true,
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-foo',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+          ],
+          deprecations: [],
+          invalidOptionWarnings: [],
+          _postcssResult: {
+            stylelint: {
+              ruleMetadata: {
+                'no-foo': { url: 'https://stylelint.io' },
+              },
+            },
+          },
+        },
+      ];
+
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });

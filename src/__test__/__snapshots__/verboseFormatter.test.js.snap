@@ -12,6 +12,18 @@ exports[`verboseFormatter using GITHUB_WORKSPACE outputs 0 stdout column 1`] = `
   bar: 1"
 `;
 
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs input CSS 1`] = `
+"<input css>
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ <input css>
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
 exports[`verboseFormatter using GITHUB_WORKSPACE outputs less than 80 stdout column 1`] = `
 "to/file.css
  1:2  ×  Unexpected foo  bar
@@ -62,6 +74,30 @@ exports[`verboseFormatter using GITHUB_WORKSPACE outputs one warnings (of severi
   bar: 1"
 `;
 
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs plugin rule warnings 1`] = `
+"file.css
+ 1:2  ×  Unexpected foo  plugin/bar
+
+1 source checked
+ /test-project/path/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  plugin/bar: 1"
+`;
+
+exports[`verboseFormatter using GITHUB_WORKSPACE outputs rule warnings with metadata 1`] = `
+"file.css
+ 1:2  ×  Unexpected foo  no-foo
+
+1 source checked
+ /test-project/path/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  no-foo: 1"
+`;
+
 exports[`verboseFormatter using GITHUB_WORKSPACE outputs two of the same warnings of 'error' and one of 'warning' across two files 1`] = `
 "to/file.css
  1:2  ×  Unexpected foo  bar
@@ -87,6 +123,18 @@ exports[`verboseFormatter using cwd outputs 0 stdout column 1`] = `
 
 1 source checked
  /test-project/path/to/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  bar: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs input CSS 1`] = `
+"<input css>
+ 1:2  ×  Unexpected foo  bar
+
+1 source checked
+ <input css>
 
 1 problem found
  severity level \\"error\\": 1
@@ -141,6 +189,30 @@ exports[`verboseFormatter using cwd outputs one warnings (of severity 'error') 1
 1 problem found
  severity level \\"error\\": 1
   bar: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs plugin rule warnings 1`] = `
+"path/file.css
+ 1:2  ×  Unexpected foo  plugin/bar
+
+1 source checked
+ /test-project/path/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  plugin/bar: 1"
+`;
+
+exports[`verboseFormatter using cwd outputs rule warnings with metadata 1`] = `
+"path/file.css
+ 1:2  ×  Unexpected foo  no-foo
+
+1 source checked
+ /test-project/path/file.css
+
+1 problem found
+ severity level \\"error\\": 1
+  no-foo: 1"
 `;
 
 exports[`verboseFormatter using cwd outputs two of the same warnings of 'error' and one of 'warning' across two files 1`] = `
