@@ -38,10 +38,10 @@ describe('stringFormatter', () => {
       delete process.env.GITHUB_WORKSPACE;
     });
 
-    runTestSuite();
+    runTestSuite('/foo/bar');
   });
 
-  function runTestSuite() {
+  function runTestSuite(cwd) {
     it('outputs no warnings', () => {
       const results = [
         {
@@ -77,7 +77,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = prepareFormatterOutput(results, stringFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -101,7 +101,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = prepareFormatterOutput(results, stringFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -127,7 +127,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = prepareFormatterOutput(results, stringFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -156,7 +156,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = prepareFormatterOutput(results, stringFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -197,7 +197,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = prepareFormatterOutput(results, stringFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -213,7 +213,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = prepareFormatterOutput(results, stringFormatter, cwd);
 
       expect(output).toBe('');
     });
@@ -237,7 +237,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = prepareFormatterOutput(results, stringFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });

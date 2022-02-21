@@ -257,7 +257,7 @@ module.exports = function (results, returnValue) {
 		accum += formatter(
 			result.warnings,
 			result.source || '',
-			(returnValue && returnValue.cwd) || process.env.GITHUB_WORKSPACE || process.cwd(),
+			process.env.GITHUB_WORKSPACE || (returnValue && returnValue.cwd) || process.cwd(),
 		);
 
 		return accum;

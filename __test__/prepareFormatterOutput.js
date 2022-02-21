@@ -10,8 +10,8 @@ symbolConversions.set('✔', '√');
 symbolConversions.set('⚠', '‼');
 symbolConversions.set('✖', '×');
 
-module.exports = function (results, formatter) {
-  let output = stripAnsi(formatter(results)).trim();
+module.exports = function (results, formatter, cwd) {
+  let output = stripAnsi(formatter(results, { cwd })).trim();
 
   for (const [nix, win] of symbolConversions.entries()) {
     output = output.replace(new RegExp(nix, 'g'), win);

@@ -27,10 +27,10 @@ describe('verboseFormatter', () => {
       delete process.env.GITHUB_WORKSPACE;
     });
 
-    runTestSuite();
+    runTestSuite('/foo/bar');
   });
 
-  function runTestSuite() {
+  function runTestSuite(cwd) {
     it('outputs no warnings', () => {
       const results = [
         {
@@ -42,7 +42,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -66,7 +66,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -94,7 +94,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
 
@@ -124,7 +124,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
 
@@ -172,7 +172,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -194,7 +194,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -210,7 +210,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });

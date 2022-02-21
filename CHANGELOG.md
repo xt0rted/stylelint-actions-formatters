@@ -1,21 +1,23 @@
 # Changelog
 
-## [14.2.0]
+## [14.2.0] - 2022-02-20 [YANKED]
+
+⚠️ The formatters were refactored in this version and the `GITHUB_WORKSPACE` environment variable was put in the wrong location. This resulted in the file paths resolving incorrectly when running on GitHub Actions. You should use v14.1.0 or v14.3.0 instead.
 
 - Synced code with [stylelint 14.2.0](https://github.com/stylelint/stylelint/releases/tag/14.2.0)
 - Bumped `table` from 6.7.3 to 6.7.5
 
-## [14.1.0]
+## [14.1.0] - 2022-02-19
 
 - Synced code with [stylelint 14.1.0](https://github.com/stylelint/stylelint/releases/tag/14.1.0)
 - Bumped `table` from 6.7.2 to 6.7.3
 
-## [14.0.1]
+## [14.0.1] - 2022-02-19
 
 - Synced code with [stylelint 14.0.1](https://github.com/stylelint/stylelint/releases/tag/14.0.1)
 - Bumped `string-width` from 4.2.2 to 4.2.3
 
-## [14.0.0]
+## [14.0.0] - 2022-02-19
 
 - Synced code with [stylelint 14.0.0](https://github.com/stylelint/stylelint/releases/tag/14.0.0)
 - Bumped `table` from 6.6.0 to 6.7.2
@@ -23,41 +25,43 @@
 - Removed `lodash`
 - Removed `log-symbols`
 
-## [13.13.1]
+## [13.13.1] - 2022-02-19
 
 - Synced code with [stylelint 13.13.1](https://github.com/stylelint/stylelint/releases/tag/13.13.1)
 - Bumped `chalk` from 4.1.0 to 4.1.1
 - Bumped `table` from 6.5.1 to 6.6.0
 
-## [13.13.0]
+## [13.13.0] - 2022-02-19
 
 - Synced code with [stylelint 13.13.0](https://github.com/stylelint/stylelint/releases/tag/13.13.0)
 - Bumped `log-symbols` from 4.0.0 to 4.1.0
 - Bumped `table` from 6.0.7 to 6.5.1
 
-## [13.12.0]
+## [13.12.0] - 2022-02-19
 
 - Synced code with [stylelint 13.12.0](https://github.com/stylelint/stylelint/releases/tag/13.12.0)
 - Bumped `string-width` from 4.2.0 to 4.2.2
 
-## [13.11.0]
+## [13.11.0] - 2022-02-19
 
 - Synced code with [stylelint 13.11.0](https://github.com/stylelint/stylelint/releases/tag/13.11.0)
 - Bumped `table` from 6.0.3 to 6.0.7
 
-## [13.10.0]
+## [13.10.0] - 2022-02-19
 
 - Synced code with [stylelint 13.10.0](https://github.com/stylelint/stylelint/releases/tag/13.10.0)
 
-## [13.9.0]
+## [13.9.0] - 2022-02-19
 
 - Synced code with [stylelint 13.9.0](https://github.com/stylelint/stylelint/releases/tag/13.9.0)
 
-## [13.8.0]
+## [13.8.0] - 2022-02-19
 
 - Synced code with [stylelint 13.8.0](https://github.com/stylelint/stylelint/releases/tag/13.8.0)
 
 ## [13.7.2]
+
+This version wasn't published to NPM due to the `package.json` not being updated correctly.
 
 - Synced code with [stylelint 13.7.2](https://github.com/stylelint/stylelint/releases/tag/13.7.2)
 - Bumped `chalk` to 4.1.0
@@ -66,7 +70,7 @@
 - Bumped `table` to 6.0.1
 - Removed `postcss-reporter` dependency
 
-## [0.1.0]
+## [0.1.0] - 2020-02-02
 
 - Initial release
 
