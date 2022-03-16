@@ -1,49 +1,53 @@
 # Changelog
 
-## [14.5.3] - 2022-02-23
+## [14.6.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.5.3...v14.6.0) - 2022-03-16
+
+- Synced code with [stylelint 14.6.0](https://github.com/stylelint/stylelint/releases/tag/14.6.0)
+
+## [14.5.3](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.5.2...v14.5.3) - 2022-02-23
 
 - Synced code with [stylelint 14.5.3](https://github.com/stylelint/stylelint/releases/tag/14.5.3)
 
-## [14.5.2] - 2022-02-23
+## [14.5.2](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.5.1...v14.5.2) - 2022-02-23
 
 - Synced code with [stylelint 14.5.2](https://github.com/stylelint/stylelint/releases/tag/14.5.2)
 
-## [14.5.1] - 2022-02-23
+## [14.5.1](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.5.0...v14.5.1) - 2022-02-23
 
 - Synced code with [stylelint 14.5.1](https://github.com/stylelint/stylelint/releases/tag/14.5.1)
 
-## [14.5.0] - 2022-02-23
+## [14.5.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.4.0...v14.5.0) - 2022-02-23
 
 - Synced code with [stylelint 14.5.0](https://github.com/stylelint/stylelint/releases/tag/14.5.0)
 
-## [14.4.0] - 2022-02-23
+## [14.4.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.3.0...v14.4.0) - 2022-02-23
 
 - Synced code with [stylelint 14.4.0](https://github.com/stylelint/stylelint/releases/tag/14.4.0)
 
-## [14.3.0] - 2022-02-20
+## [14.3.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.2.0...v14.3.0) - 2022-02-20
 
 - Synced code with [stylelint 14.3.0](https://github.com/stylelint/stylelint/releases/tag/14.3.0)
 - Bumped `table` from 6.7.5 to 6.8.0
 - Moved package contents from `/` to `/src`
 
-## [14.2.0] - 2022-02-20 [YANKED]
+## [14.2.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.1.0...v14.2.0) - 2022-02-20 [YANKED]
 
 ⚠️ The formatters were refactored in this version and the `GITHUB_WORKSPACE` environment variable was put in the wrong location. This resulted in the file paths resolving incorrectly when running on GitHub Actions. You should use v14.1.0 or v14.3.0 instead.
 
 - Synced code with [stylelint 14.2.0](https://github.com/stylelint/stylelint/releases/tag/14.2.0)
 - Bumped `table` from 6.7.3 to 6.7.5
 
-## [14.1.0] - 2022-02-19
+## [14.1.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.0.1...v14.1.0) - 2022-02-19
 
 - Synced code with [stylelint 14.1.0](https://github.com/stylelint/stylelint/releases/tag/14.1.0)
 - Bumped `table` from 6.7.2 to 6.7.3
 
-## [14.0.1] - 2022-02-19
+## [14.0.1](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.0.0...v14.0.1) - 2022-02-19
 
 - Synced code with [stylelint 14.0.1](https://github.com/stylelint/stylelint/releases/tag/14.0.1)
 - Bumped `string-width` from 4.2.2 to 4.2.3
 
-## [14.0.0] - 2022-02-19
+## [14.0.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.13.1...v14.0.0) - 2022-02-19
 
 - Synced code with [stylelint 14.0.0](https://github.com/stylelint/stylelint/releases/tag/14.0.0)
 - Bumped `table` from 6.6.0 to 6.7.2
@@ -51,41 +55,41 @@
 - Removed `lodash`
 - Removed `log-symbols`
 
-## [13.13.1] - 2022-02-19
+## [13.13.1](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.13.0...v13.13.1) - 2022-02-19
 
 - Synced code with [stylelint 13.13.1](https://github.com/stylelint/stylelint/releases/tag/13.13.1)
 - Bumped `chalk` from 4.1.0 to 4.1.1
 - Bumped `table` from 6.5.1 to 6.6.0
 
-## [13.13.0] - 2022-02-19
+## [13.13.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.12.0...v13.13.0) - 2022-02-19
 
 - Synced code with [stylelint 13.13.0](https://github.com/stylelint/stylelint/releases/tag/13.13.0)
 - Bumped `log-symbols` from 4.0.0 to 4.1.0
 - Bumped `table` from 6.0.7 to 6.5.1
 
-## [13.12.0] - 2022-02-19
+## [13.12.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.11.0...v13.12.0) - 2022-02-19
 
 - Synced code with [stylelint 13.12.0](https://github.com/stylelint/stylelint/releases/tag/13.12.0)
 - Bumped `string-width` from 4.2.0 to 4.2.2
 
-## [13.11.0] - 2022-02-19
+## [13.11.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.10.0...v13.11.0) - 2022-02-19
 
 - Synced code with [stylelint 13.11.0](https://github.com/stylelint/stylelint/releases/tag/13.11.0)
 - Bumped `table` from 6.0.3 to 6.0.7
 
-## [13.10.0] - 2022-02-19
+## [13.10.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.9.0...v13.10.0) - 2022-02-19
 
 - Synced code with [stylelint 13.10.0](https://github.com/stylelint/stylelint/releases/tag/13.10.0)
 
-## [13.9.0] - 2022-02-19
+## [13.9.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.8.0...v13.9.0) - 2022-02-19
 
 - Synced code with [stylelint 13.9.0](https://github.com/stylelint/stylelint/releases/tag/13.9.0)
 
-## [13.8.0] - 2022-02-19
+## [13.8.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.7.2...v13.8.0) - 2022-02-19
 
 - Synced code with [stylelint 13.8.0](https://github.com/stylelint/stylelint/releases/tag/13.8.0)
 
-## [13.7.2]
+## [13.7.2](https://github.com/xt0rted/stylelint-actions-formatters/compare/v0.1.0...v13.7.2)
 
 This version wasn't published to NPM due to the `package.json` not being updated correctly.
 
@@ -96,26 +100,6 @@ This version wasn't published to NPM due to the `package.json` not being updated
 - Bumped `table` to 6.0.1
 - Removed `postcss-reporter` dependency
 
-## [0.1.0] - 2020-02-02
+## [0.1.0](https://github.com/xt0rted/stylelint-actions-formatters/releases/tag/v0.1.0) - 2020-02-02
 
 - Initial release
-
-[14.5.3]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.5.2...v14.5.3
-[14.5.2]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.5.1...v14.5.2
-[14.5.1]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.5.0...v14.5.1
-[14.5.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.4.0...v14.5.0
-[14.4.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.3.0...v14.4.0
-[14.3.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.2.0...v14.3.0
-[14.2.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.1.0...v14.2.0
-[14.1.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.0.1...v14.1.0
-[14.0.1]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.0.0...v14.0.1
-[14.0.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.13.1...v14.0.0
-[13.13.1]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.13.0...v13.13.1
-[13.13.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.12.0...v13.13.0
-[13.12.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.11.0...v13.12.0
-[13.11.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.10.0...v13.11.0
-[13.10.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.9.0...v13.10.0
-[13.9.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.8.0...v13.9.0
-[13.8.0]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v13.7.2...v13.8.0
-[13.7.2]: https://github.com/xt0rted/stylelint-actions-formatters/compare/v0.1.0...v13.7.2
-[0.1.0]: https://github.com/xt0rted/stylelint-actions-formatters/releases/tag/v0.1.0

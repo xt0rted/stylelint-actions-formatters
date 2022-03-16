@@ -1,6 +1,8 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.5.3/lib/formatters/__tests__/prepareFormatterOutput.js
+ * https://github.com/stylelint/stylelint/blob/14.6.0/lib/formatters/__tests__/prepareFormatterOutput.js
  */
+'use strict';
+
 const stripAnsi = require('strip-ansi');
 
 const symbolConversions = new Map();
