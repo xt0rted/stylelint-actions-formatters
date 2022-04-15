@@ -10,19 +10,26 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  FORCE_COLOR: 2
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    name: Test on Node.js ${{ matrix.node }} and ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
       matrix:
         node: [12, 14, 16]
+        os: [macos-latest, ubuntu-latest, windows-latest]
 
     steps:
       - name: Check out repo
         uses: actions/checkout@v3.0.1
 
-      - name: Install node
+      - name: Set up Node.js
         uses: actions/setup-node@v3.1.1
         with:
           node-version: ${{ matrix.node }}
