@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.7.1/lib/formatters/verboseFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.8.0/lib/formatters/verboseFormatter.js
  */
 'use strict';
 
@@ -81,12 +81,13 @@ function groupBy(array, keyFn) {
 
 	for (const item of array) {
 		const key = keyFn(item);
+		let warnings = result[key];
 
-		if (!(key in result)) {
-			result[key] = [];
+		if (warnings === undefined) {
+			result[key] = warnings = [];
 		}
 
-		result[key].push(item);
+		warnings.push(item);
 	}
 
 	return result;

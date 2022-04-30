@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.7.1/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.8.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -7,6 +7,8 @@ const path = require('path');
 const stringWidth = require('string-width');
 const table = require('table');
 const { yellow, dim, underline, blue, red, green } = require('picocolors');
+
+const { assertNumber } = require('./validateTypes');
 const terminalLink = require('./terminalLink');
 
 const MARGIN_WIDTHS = 9;
@@ -101,8 +103,12 @@ function logFrom(fromValue, cwd) {
  * @return {number}
  */
 function getMessageWidth(columnWidths) {
+	const width = columnWidths[3];
+
+	assertNumber(width);
+
 	if (!process.stdout.isTTY) {
-		return columnWidths[3];
+		return width;
 	}
 
 	const availableWidth = process.stdout.columns < 80 ? 80 : process.stdout.columns;
@@ -110,10 +116,10 @@ function getMessageWidth(columnWidths) {
 
 	// If there is no reason to wrap the text, we won't align the last column to the right
 	if (availableWidth > fullWidth + MARGIN_WIDTHS) {
-		return columnWidths[3];
+		return width;
 	}
 
-	return availableWidth - (fullWidth - columnWidths[3] + MARGIN_WIDTHS);
+	return availableWidth - (fullWidth - width + MARGIN_WIDTHS);
 }
 
 /**
@@ -157,8 +163,10 @@ function formatter(messages, source, cwd) {
 	function calculateWidths(columns) {
 		for (const [key, value] of Object.entries(columns)) {
 			const normalisedValue = value ? value.toString() : value;
+			const width = columnWidths[key];
 
-			columnWidths[key] = Math.max(columnWidths[key], stringWidth(normalisedValue));
+			assertNumber(width);
+			columnWidths[key] = Math.max(width, stringWidth(normalisedValue));
 		}
 
 		return columns;
