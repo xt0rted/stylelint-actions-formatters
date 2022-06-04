@@ -32,8 +32,8 @@
   },
   "homepage": "https://github.com/xt0rted/stylelint-actions-formatters#readme",
   "devDependencies": {
-    "jest": "^27.5.1",
-    "jest-circus": "^27.5.1"
+    "jest": "^28.1.0",
+    "jest-circus": "^28.1.0"
   },
   "dependencies": {
     "is-plain-object": "^5.0.0",
