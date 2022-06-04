@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.8.2/lib/formatters/__tests__/verboseFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.8.3/lib/formatters/__tests__/verboseFormatter.test.js
  */
 'use strict';
 
