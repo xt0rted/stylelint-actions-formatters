@@ -8,7 +8,9 @@
     "!**/__test__/**"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "update:version": "npm --no-git-tag-version version",
+    "update:code": "node ./scripts/download.mjs"
   },
   "repository": {
     "type": "git",
