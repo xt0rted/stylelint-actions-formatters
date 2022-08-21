@@ -22,9 +22,8 @@ jobs:
       - name: Get version from tag
         id: tag_name
         run: echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
-        shell: bash
 
-      - name: Check out repo
+      - name: Check out repository
         uses: actions/checkout@v3.0.2
 
       - name: Set up Node.js
@@ -39,9 +38,21 @@ jobs:
         with:
           version: ${{ steps.tag_name.outputs.current_version }}
 
-      - uses: softprops/action-gh-release@v0.1.14
+      - name: Update release with changelog contents
+        uses: softprops/action-gh-release@v0.1.14
+        id: release_updater
         with:
           body: ${{ steps.changelog_reader.outputs.changes }}
+
+      - name: Create discussion for release
+        run: |
+          gh api \
+            --method PATCH \
+            -H "Accept: application/vnd.github+json" \
+            /repos/${{ github.repository }}/releases/${{ steps.release_updater.outputs.id }} \
+            -f discussion_category_name='Announcements'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm ci
 
