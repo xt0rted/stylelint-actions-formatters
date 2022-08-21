@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.8.5/lib/formatters/__tests__/verboseFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.9.0/lib/formatters/__tests__/verboseFormatter.test.js
  */
 'use strict';
 
@@ -234,7 +234,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -258,7 +258,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });
@@ -289,7 +289,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
 
       expect(output).toMatchSnapshot();
     });

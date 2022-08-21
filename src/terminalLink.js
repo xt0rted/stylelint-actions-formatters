@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.8.5/lib/formatters/terminalLink.js
+ * https://github.com/stylelint/stylelint/blob/14.9.0/lib/formatters/terminalLink.js
  */
 const supportsHyperlinks = require('supports-hyperlinks');
 
@@ -16,9 +16,9 @@ const SEP = ';';
  * @returns {string}
  */
 module.exports = function terminalLink(text, url) {
-	if (supportsHyperlinks.stdout) {
-		return [OSC, '8', SEP, SEP, url, BEL, text, OSC, '8', SEP, SEP, BEL].join('');
-	}
+  if (supportsHyperlinks.stdout) {
+    return [OSC, '8', SEP, SEP, url, BEL, text, OSC, '8', SEP, SEP, BEL].join('');
+  }
 
-	return text;
+  return text;
 };
