@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.9.1/lib/formatters/__tests__/prepareFormatterOutput.js
+ * https://github.com/stylelint/stylelint/blob/14.10.0/lib/formatters/__tests__/prepareFormatterOutput.js
  */
 'use strict';
 
@@ -12,8 +12,11 @@ symbolConversions.set('✔', '√');
 symbolConversions.set('⚠', '‼');
 symbolConversions.set('✖', '×');
 
-module.exports = function (results, formatter, cwd) {
-  let output = stripAnsi(formatter(results, { cwd })).trim();
+module.exports = function (results, formatter, returnValue) {
+  returnValue = returnValue || {
+    ruleMetadata: {},
+  };
+  let output = stripAnsi(formatter(results, returnValue)).trim();
 
   for (const [nix, win] of symbolConversions.entries()) {
     output = output.replace(new RegExp(nix, 'g'), win);

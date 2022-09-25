@@ -1,7 +1,9 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.9.1/lib/formatters/__tests__/verboseFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.10.0/lib/formatters/__tests__/verboseFormatter.test.js
  */
 'use strict';
+
+const { stripIndent } = require('common-tags');
 
 const prepareFormatterOutput = require('./prepareFormatterOutput');
 const verboseFormatter = require('../verboseFormatter');
@@ -27,10 +29,10 @@ describe('verboseFormatter', () => {
       delete process.env.GITHUB_WORKSPACE;
     });
 
-    runTestSuite('/foo/bar');
+    runTestSuite();
   });
 
-  function runTestSuite(cwd) {
+  function runTestSuite() {
     it('outputs no warnings', () => {
       const results = [
         {
@@ -42,7 +44,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -66,7 +68,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -94,7 +96,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
 
@@ -124,7 +126,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
 
@@ -172,7 +174,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -194,7 +196,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -210,7 +212,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -234,7 +236,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -258,7 +260,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -279,17 +281,15 @@ describe('verboseFormatter', () => {
           ],
           deprecations: [],
           invalidOptionWarnings: [],
-          _postcssResult: {
-            stylelint: {
-              ruleMetadata: {
-                'no-foo': { url: 'https://stylelint.io' },
-              },
-            },
-          },
         },
       ];
+      const returnValue = {
+        ruleMetadata: {
+          'no-foo': { url: 'https://stylelint.io', fixable: true },
+        },
+      };
 
-      const output = prepareFormatterOutput(results, verboseFormatter, cwd);
+      const output = prepareFormatterOutput(results, verboseFormatter, returnValue);
 
       expect(output).toMatchSnapshot();
     });

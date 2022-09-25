@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.9.1/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.10.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -8,6 +8,7 @@ const stringWidth = require('string-width');
 const table = require('table');
 const { yellow, dim, underline, blue, red, green } = require('picocolors');
 
+const pluralize = require('./pluralize');
 const { assertNumber } = require('./validateTypes');
 const terminalLink = require('./terminalLink');
 
@@ -254,10 +255,13 @@ module.exports = function (results, returnValue) {
 
   output += deprecationsFormatter(results);
 
+  let errorCount = 0;
+  let warningCount = 0;
+
   output = results.reduce((accum, result) => {
     // Treat parseErrors as warnings
     if (result.parseErrors) {
-      for (const error of result.parseErrors)
+      for (const error of result.parseErrors) {
         result.warnings.push({
           line: error.line,
           column: error.column,
@@ -265,6 +269,8 @@ module.exports = function (results, returnValue) {
           severity: 'error',
           text: `${error.text} (${error.stylelintType})`,
         });
+        errorCount += 1;
+      }
     }
 
     accum += formatter(
@@ -272,6 +278,19 @@ module.exports = function (results, returnValue) {
       result.source || '',
       process.env.GITHUB_WORKSPACE || (returnValue && returnValue.cwd) || process.cwd(),
     );
+
+    for (const warning of result.warnings) {
+      switch (warning.severity) {
+        case 'error':
+          errorCount += 1;
+          break;
+        case 'warning':
+          warningCount += 1;
+          break;
+        default:
+          throw new Error(`Unknown severity: "${warning.severity}"`);
+      }
+    }
 
     return accum;
   }, output);
@@ -281,6 +300,17 @@ module.exports = function (results, returnValue) {
 
   if (output !== '') {
     output = `\n${output}\n\n`;
+
+    const total = errorCount + warningCount;
+
+    if (total > 0) {
+      const tally =
+        `${total} ${pluralize('problem', total)}` +
+        ` (${errorCount} ${pluralize('error', errorCount)}` +
+        `, ${warningCount} ${pluralize('warning', warningCount)})`;
+
+      output += `${tally}\n\n`;
+    }
   }
 
   return output;

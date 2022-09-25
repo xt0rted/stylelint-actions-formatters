@@ -1,7 +1,9 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.9.1/lib/formatters/__tests__/stringFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.10.0/lib/formatters/__tests__/stringFormatter.test.js
  */
 'use strict';
+
+const { stripIndent } = require('common-tags');
 
 const prepareFormatterOutput = require('./prepareFormatterOutput');
 const stringFormatter = require('../stringFormatter');
@@ -38,10 +40,10 @@ describe('stringFormatter', () => {
       delete process.env.GITHUB_WORKSPACE;
     });
 
-    runTestSuite('/foo/bar');
+    runTestSuite();
   });
 
-  function runTestSuite(cwd) {
+  function runTestSuite() {
     it('outputs no warnings', () => {
       const results = [
         {
@@ -77,7 +79,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter, cwd);
+      const output = prepareFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -92,7 +94,7 @@ describe('stringFormatter', () => {
               line: 1,
               column: 1,
               rule: 'rule-name',
-              severity: 'error',
+              severity: 'warning',
               text: 'Unexpected foo (rule-name)',
             },
           ],
@@ -101,7 +103,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter, cwd);
+      const output = prepareFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -127,7 +129,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter, cwd);
+      const output = prepareFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -155,7 +157,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter, cwd);
+      const output = prepareFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -196,7 +198,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter, cwd);
+      const output = prepareFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -212,7 +214,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter, cwd);
+      const output = prepareFormatterOutput(results, stringFormatter);
 
       expect(output).toBe('');
     });
@@ -236,7 +238,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter, cwd);
+      const output = prepareFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });

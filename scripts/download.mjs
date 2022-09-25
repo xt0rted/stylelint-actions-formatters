@@ -20,6 +20,9 @@ const files = [
     source: "lib/formatters/terminalLink.js",
   },
   {
+    source: "lib/utils/pluralize.js",
+  },
+  {
     source: "lib/utils/validateTypes.js",
   },
   {
