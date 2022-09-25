@@ -52,7 +52,7 @@ jobs:
             /repos/${{ github.repository }}/releases/${{ steps.release_updater.outputs.id }} \
             -f discussion_category_name='Announcements'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
 
       - run: npm ci
 
