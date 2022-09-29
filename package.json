@@ -1,6 +1,6 @@
 {
   "name": "stylelint-actions-formatters",
-  "version": "14.12.1",
+  "version": "14.13.0",
   "description": "These are copies of the built-in formatters with modified file paths so that Checks Annotations can be created on GitHub Actions.\r This package should be used with the `xt0rted/stylelint-problem-matcher` action.",
   "main": "src/stringFormatter.js",
   "files": [
@@ -33,19 +33,19 @@
     "url": "https://github.com/xt0rted/stylelint-actions-formatters/issues"
   },
   "homepage": "https://github.com/xt0rted/stylelint-actions-formatters#readme",
+  "dependencies": {
+    "is-plain-object": "^5.0.0",
+    "picocolors": "^1.0.0",
+    "string-width": "^4.2.3",
+    "supports-hyperlinks": "^2.3.0",
+    "table": "^6.8.0"
+  },
   "devDependencies": {
     "common-tags": "^1.8.2",
     "jest": "^28.1.0",
     "jest-circus": "^28.1.0"
   },
-  "dependencies": {
-    "is-plain-object": "^5.0.0",
-    "picocolors": "^1.0.0",
-    "string-width": "^4.2.3",
-    "supports-hyperlinks": "^2.2.0",
-    "table": "^6.8.0"
-  },
   "peerDependencies": {
-    "stylelint": "^14.12.1"
+    "stylelint": "^14.13.0"
   }
 }
