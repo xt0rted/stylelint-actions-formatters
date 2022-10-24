@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.13.0/lib/formatters/__tests__/prepareFormatterOutput.js
+ * https://github.com/stylelint/stylelint/blob/14.14.0/lib/formatters/__tests__/prepareFormatterOutput.js
  */
 'use strict';
 
@@ -12,7 +12,7 @@ symbolConversions.set('✔', '√');
 symbolConversions.set('⚠', '‼');
 symbolConversions.set('✖', '×');
 
-module.exports = function (results, formatter, returnValue) {
+module.exports = function prepareFormatterOutput(results, formatter, returnValue) {
   returnValue = returnValue || {
     ruleMetadata: {},
   };

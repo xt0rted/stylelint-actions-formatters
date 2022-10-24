@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.13.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.14.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -250,7 +250,7 @@ function formatter(messages, source, cwd) {
 /**
  * @type {import('stylelint').Formatter}
  */
-module.exports = function (results, returnValue) {
+module.exports = function stringFormatter(results, returnValue) {
   let output = invalidOptionsFormatter(results);
 
   output += deprecationsFormatter(results);
