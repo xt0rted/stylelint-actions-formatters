@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.14.0/lib/formatters/terminalLink.js
+ * https://github.com/stylelint/stylelint/blob/14.14.1/lib/formatters/terminalLink.js
  */
 const supportsHyperlinks = require('supports-hyperlinks');
 

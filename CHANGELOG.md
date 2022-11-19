@@ -1,5 +1,10 @@
 # Changelog
 
+## [14.14.1](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.14.0...v14.14.1) - 2022-11-19
+
+- Synced code with [stylelint 14.14.1](https://github.com/stylelint/stylelint/releases/tag/14.14.1)
+- Bumped `table` from 6.8.0 to 6.8.1
+
 ## [14.14.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.13.0...v14.14.0) - 2022-10-23
 
 - Synced code with [stylelint 14.14.0](https://github.com/stylelint/stylelint/releases/tag/14.14.0)
