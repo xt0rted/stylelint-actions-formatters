@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.14.1/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.15.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -304,10 +304,9 @@ module.exports = function stringFormatter(results, returnValue) {
     const total = errorCount + warningCount;
 
     if (total > 0) {
-      const tally =
-        `${total} ${pluralize('problem', total)}` +
-        ` (${errorCount} ${pluralize('error', errorCount)}` +
-        `, ${warningCount} ${pluralize('warning', warningCount)})`;
+      const error = red(`${errorCount} ${pluralize('error', errorCount)}`);
+      const warning = yellow(`${warningCount} ${pluralize('warning', warningCount)}`);
+      const tally = `${total} ${pluralize('problem', total)} (${error}, ${warning})`;
 
       output += `${tally}\n\n`;
     }
