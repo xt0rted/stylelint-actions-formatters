@@ -1,5 +1,9 @@
 # Changelog
 
+## [14.16.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.15.0...v14.16.0) - 2022-12-05
+
+- Synced code with [stylelint 14.16.0](https://github.com/stylelint/stylelint/releases/tag/14.16.0)
+
 ## [14.15.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v14.14.1...v14.15.0) - 2022-11-19
 
 - Synced code with [stylelint 14.15.0](https://github.com/stylelint/stylelint/releases/tag/14.15.0)

@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.15.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/14.16.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -8,8 +8,10 @@ const stringWidth = require('string-width');
 const table = require('table');
 const { yellow, dim, underline, blue, red, green } = require('picocolors');
 
+const calcSeverityCounts = require('./calcSeverityCounts');
 const pluralize = require('./pluralize');
 const { assertNumber } = require('./validateTypes');
+const preprocessWarnings = require('./preprocessWarnings');
 const terminalLink = require('./terminalLink');
 
 const MARGIN_WIDTHS = 9;
@@ -41,7 +43,7 @@ const symbols = {
  * @returns {string}
  */
 function deprecationsFormatter(results) {
-  const allDeprecationWarnings = results.flatMap((result) => result.deprecations);
+  const allDeprecationWarnings = results.flatMap((result) => result.deprecations || []);
 
   if (allDeprecationWarnings.length === 0) {
     return '';
@@ -72,7 +74,7 @@ function deprecationsFormatter(results) {
  */
 function invalidOptionsFormatter(results) {
   const allInvalidOptionWarnings = results.flatMap((result) =>
-    result.invalidOptionWarnings.map((warning) => warning.text),
+    (result.invalidOptionWarnings || []).map((warning) => warning.text),
   );
   const uniqueInvalidOptionWarnings = [...new Set(allInvalidOptionWarnings)];
 
@@ -130,25 +132,7 @@ function getMessageWidth(columnWidths) {
  * @return {string}
  */
 function formatter(messages, source, cwd) {
-  if (!messages.length) return '';
-
-  const orderedMessages = [...messages].sort((a, b) => {
-    // positionless first
-    if (!a.line && b.line) return -1;
-
-    // positionless first
-    if (a.line && !b.line) return 1;
-
-    if (a.line < b.line) return -1;
-
-    if (a.line > b.line) return 1;
-
-    if (a.column < b.column) return -1;
-
-    if (a.column > b.column) return 1;
-
-    return 0;
-  });
+  if (messages.length === 0) return '';
 
   /**
    * Create a list of column widths, needed to calculate
@@ -200,7 +184,7 @@ function formatter(messages, source, cwd) {
     return result;
   }
 
-  const cleanedMessages = orderedMessages.map((message) => {
+  const cleanedMessages = messages.map((message) => {
     const { line, column, severity } = message;
     /**
      * @type {[string, string, string, string, string]}
@@ -235,13 +219,7 @@ function formatter(messages, source, cwd) {
       drawHorizontalLine: () => false,
     })
     .split('\n')
-    .map(
-      /**
-       * @param {string} el
-       * @returns {string}
-       */
-      (el) => el.replace(/(\d+)\s+(\d+)/, (_m, p1, p2) => dim(`${p1}:${p2}`)),
-    )
+    .map((el) => el.replace(/(\d+)\s+(\d+)/, (_m, p1, p2) => dim(`${p1}:${p2}`)).trimEnd())
     .join('\n');
 
   return output;
@@ -255,23 +233,10 @@ module.exports = function stringFormatter(results, returnValue) {
 
   output += deprecationsFormatter(results);
 
-  let errorCount = 0;
-  let warningCount = 0;
+  const counts = { error: 0, warning: 0 };
 
   output = results.reduce((accum, result) => {
-    // Treat parseErrors as warnings
-    if (result.parseErrors) {
-      for (const error of result.parseErrors) {
-        result.warnings.push({
-          line: error.line,
-          column: error.column,
-          rule: error.stylelintType,
-          severity: 'error',
-          text: `${error.text} (${error.stylelintType})`,
-        });
-        errorCount += 1;
-      }
-    }
+    preprocessWarnings(result);
 
     accum += formatter(
       result.warnings,
@@ -280,16 +245,7 @@ module.exports = function stringFormatter(results, returnValue) {
     );
 
     for (const warning of result.warnings) {
-      switch (warning.severity) {
-        case 'error':
-          errorCount += 1;
-          break;
-        case 'warning':
-          warningCount += 1;
-          break;
-        default:
-          throw new Error(`Unknown severity: "${warning.severity}"`);
-      }
+      calcSeverityCounts(warning.severity, counts);
     }
 
     return accum;
@@ -301,6 +257,8 @@ module.exports = function stringFormatter(results, returnValue) {
   if (output !== '') {
     output = `\n${output}\n\n`;
 
+    const errorCount = counts.error;
+    const warningCount = counts.warning;
     const total = errorCount + warningCount;
 
     if (total > 0) {

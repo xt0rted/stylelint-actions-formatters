@@ -1,6 +1,8 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.15.0/lib/formatters/terminalLink.js
+ * https://github.com/stylelint/stylelint/blob/14.16.0/lib/formatters/terminalLink.js
  */
+'use strict';
+
 const supportsHyperlinks = require('supports-hyperlinks');
 
 // ANSI escapes

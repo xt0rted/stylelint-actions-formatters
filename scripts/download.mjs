@@ -14,19 +14,25 @@ const source = {
 
 const files = [
   {
+    source: "lib/formatters/calcSeverityCounts.js",
+  },
+  {
+    source: "lib/formatters/preprocessWarnings.js",
+  },
+  {
     source: "lib/formatters/stringFormatter.js",
   },
   {
     source: "lib/formatters/terminalLink.js",
   },
   {
+    source: "lib/formatters/verboseFormatter.js",
+  },
+  {
     source: "lib/utils/pluralize.js",
   },
   {
     source: "lib/utils/validateTypes.js",
-  },
-  {
-    source: "lib/formatters/verboseFormatter.js",
   },
   {
     source: "lib/formatters/__tests__/prepareFormatterOutput.js",

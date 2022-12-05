@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.15.0/lib/formatters/__tests__/stringFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/14.16.0/lib/formatters/__tests__/stringFormatter.test.js
  */
 'use strict';
 
@@ -48,10 +48,7 @@ describe('stringFormatter', () => {
       const results = [
         {
           source: '/test-project/path/to/file.css',
-          errored: false,
           warnings: [],
-          deprecations: [],
-          invalidOptionWarnings: [],
         },
       ];
 
@@ -64,7 +61,6 @@ describe('stringFormatter', () => {
       const results = [
         {
           source: '/test-project/path/to/file.css',
-          errored: true,
           warnings: [
             {
               line: 1,
@@ -74,8 +70,6 @@ describe('stringFormatter', () => {
               text: 'Unexpected foo',
             },
           ],
-          deprecations: [],
-          invalidOptionWarnings: [],
         },
       ];
 
@@ -88,7 +82,6 @@ describe('stringFormatter', () => {
       const results = [
         {
           source: '/test-project/path/to/file.css',
-          errored: true,
           warnings: [
             {
               line: 1,
@@ -98,8 +91,6 @@ describe('stringFormatter', () => {
               text: 'Unexpected foo (rule-name)',
             },
           ],
-          deprecations: [],
-          invalidOptionWarnings: [],
         },
       ];
 
@@ -114,7 +105,6 @@ describe('stringFormatter', () => {
       const results = [
         {
           source: '/test-project/path/to/file.css',
-          errored: true,
           warnings: [
             {
               line: 1,
@@ -124,8 +114,6 @@ describe('stringFormatter', () => {
               text: 'Unexpected foo',
             },
           ],
-          deprecations: [],
-          invalidOptionWarnings: [],
         },
       ];
 
@@ -134,7 +122,7 @@ describe('stringFormatter', () => {
       expect(output).toMatchSnapshot();
     });
 
-    it('output warnings with more than 80 characters and `process.stdout.columns` equal 90 characters', () => {
+    it('outputs warnings with more than 80 characters and `process.stdout.columns` equal 90 characters', () => {
       // For Windows tests
       process.stdout.isTTY = true;
       process.stdout.columns = 90;
@@ -142,7 +130,6 @@ describe('stringFormatter', () => {
       const results = [
         {
           source: '/test-project/path/to/file.css',
-          errored: true,
           warnings: [
             {
               line: 1,
@@ -152,8 +139,6 @@ describe('stringFormatter', () => {
               text: 'Unexpected very very very very very very very very very very very very very long foo',
             },
           ],
-          deprecations: [],
-          invalidOptionWarnings: [],
         },
       ];
 
@@ -177,7 +162,6 @@ describe('stringFormatter', () => {
               text: 'Unexpected option for baz',
             },
           ],
-          errored: true,
           warnings: [],
         },
         {
@@ -193,7 +177,6 @@ describe('stringFormatter', () => {
               text: 'Unexpected option for baz',
             },
           ],
-          errored: true,
           warnings: [],
         },
       ];
@@ -208,8 +191,6 @@ describe('stringFormatter', () => {
         {
           source: 'file.css',
           warnings: [],
-          deprecations: [],
-          invalidOptionWarnings: [],
           ignored: true,
         },
       ];
@@ -223,7 +204,6 @@ describe('stringFormatter', () => {
       const results = [
         {
           source: '/test-project/path/to/file.css',
-          errored: true,
           warnings: [
             {
               line: 1,
@@ -233,8 +213,40 @@ describe('stringFormatter', () => {
               text: '',
             },
           ],
-          deprecations: [],
-          invalidOptionWarnings: [],
+        },
+      ];
+
+      const output = prepareFormatterOutput(results, stringFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs parse errors and warnings without rule and severity', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+          parseErrors: [
+            {
+              line: 1,
+              column: 1,
+              stylelintType: 'foo-error',
+              text: 'Cannot parse foo',
+            },
+          ],
+          warnings: [
+            {
+              line: 3,
+              column: 1,
+              rule: 'no-bar',
+              severity: 'error',
+              text: 'Disallow bar',
+            },
+            {
+              line: 2,
+              column: 1,
+              text: 'Anonymous error',
+            },
+          ],
         },
       ];
 
