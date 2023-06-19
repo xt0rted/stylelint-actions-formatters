@@ -104,7 +104,7 @@ exports[`verboseFormatter using GITHUB_WORKSPACE outputs rule warnings with meta
 1 error found
  no-foo: 1 (maybe fixable)
 
-You may fix some problems with the \\"--fix\\" option."
+You may fix some problems with the "--fix" option."
 `;
 
 exports[`verboseFormatter using GITHUB_WORKSPACE outputs two of the same warnings of 'error' and one of 'warning' across two files 1`] = `
@@ -232,7 +232,7 @@ exports[`verboseFormatter using cwd outputs rule warnings with metadata 1`] = `
 1 error found
  no-foo: 1 (maybe fixable)
 
-You may fix some problems with the \\"--fix\\" option."
+You may fix some problems with the "--fix" option."
 `;
 
 exports[`verboseFormatter using cwd outputs two of the same warnings of 'error' and one of 'warning' across two files 1`] = `

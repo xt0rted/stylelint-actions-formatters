@@ -16,7 +16,8 @@ jobs:
 
     strategy:
       matrix:
-        node: [16]
+        node:
+          - latest
 
     steps:
       - name: Get version from tag
