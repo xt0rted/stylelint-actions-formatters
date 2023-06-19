@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.16.0/lib/formatters/verboseFormatter.js
+ * https://github.com/stylelint/stylelint/blob/15.0.0/lib/formatters/verboseFormatter.js
  */
 'use strict';
 
@@ -75,12 +75,17 @@ module.exports = function verboseFormatter(results, returnValue) {
       const metadata = returnValue.ruleMetadata;
 
       for (const [rule, list] of Object.entries(problemsByRule)) {
-        const meta = metadata[rule];
-        const fixable = meta && meta.fixable ? ' (maybe fixable)' : '';
+        const meta = metadata[rule] || {};
 
-        output += dim(` ${ruleLink(rule, meta)}: ${list.length}${fixable}\n`);
+        let additional = [meta.fixable ? 'maybe fixable' : '', meta.deprecated ? 'deprecated' : '']
+          .filter(Boolean)
+          .join(', ');
 
-        if (!fixableProblemsFound && meta && meta.fixable) {
+        additional = additional ? ` (${additional})` : '';
+
+        output += dim(` ${ruleLink(rule, meta)}: ${list.length}${additional}\n`);
+
+        if (!fixableProblemsFound && meta.fixable) {
           fixableProblemsFound = true;
         }
       }

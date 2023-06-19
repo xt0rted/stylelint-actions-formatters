@@ -1,9 +1,7 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.16.0/lib/formatters/__tests__/verboseFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/15.0.0/lib/formatters/__tests__/verboseFormatter.test.js
  */
 'use strict';
-
-const { stripIndent } = require('common-tags');
 
 const prepareFormatterOutput = require('./prepareFormatterOutput');
 const verboseFormatter = require('../verboseFormatter');
@@ -278,6 +276,20 @@ describe('verboseFormatter', () => {
               severity: 'error',
               text: 'Unexpected foo',
             },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-bar',
+              severity: 'error',
+              text: 'Unexpected bar',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-baz',
+              severity: 'error',
+              text: 'Unexpected baz',
+            },
           ],
           deprecations: [],
           invalidOptionWarnings: [],
@@ -285,7 +297,9 @@ describe('verboseFormatter', () => {
       ];
       const returnValue = {
         ruleMetadata: {
-          'no-foo': { url: 'https://stylelint.io', fixable: true },
+          'no-foo': { url: 'https://stylelint.io', fixable: true, deprecated: true },
+          'no-bar': { url: 'https://stylelint.io', fixable: true },
+          'no-baz': { url: 'https://stylelint.io', deprecated: true },
         },
       };
 

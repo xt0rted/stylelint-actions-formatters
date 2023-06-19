@@ -1,9 +1,7 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/14.16.0/lib/formatters/__tests__/stringFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/15.0.0/lib/formatters/__tests__/stringFormatter.test.js
  */
 'use strict';
-
-const { stripIndent } = require('common-tags');
 
 const prepareFormatterOutput = require('./prepareFormatterOutput');
 const stringFormatter = require('../stringFormatter');
@@ -153,7 +151,7 @@ describe('stringFormatter', () => {
           source: 'file.css',
           deprecations: [
             {
-              text: 'Deprecated foo',
+              text: 'Deprecated foo.',
               reference: 'bar',
             },
           ],
@@ -168,7 +166,7 @@ describe('stringFormatter', () => {
           source: 'file2.css',
           deprecations: [
             {
-              text: 'Deprecated foo',
+              text: 'Deprecated foo.',
               reference: 'bar',
             },
           ],

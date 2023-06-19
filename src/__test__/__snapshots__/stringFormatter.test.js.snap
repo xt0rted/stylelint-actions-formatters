@@ -3,20 +3,13 @@
 exports[`stringFormatter using GITHUB_WORKSPACE condenses deprecations and invalid option warnings 1`] = `
 "Invalid Option: Unexpected option for baz
 
-Deprecation Warning: Deprecated foo See: bar"
+Deprecation warnings:
+ - Deprecated foo. See: bar"
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE handles empty messages 1`] = `
 "to/file.css
  1:1  ×     bar
-
-1 problem (1 error, 0 warnings)"
-`;
-
-exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
-"to/file.css
- 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
-         very very very very very very long foo
 
 1 problem (1 error, 0 warnings)"
 `;
@@ -33,6 +26,14 @@ exports[`stringFormatter using GITHUB_WORKSPACE outputs parse errors and warning
 exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings 1`] = `
 "to/file.css
  1:1  ×  Unexpected foo  bar
+
+1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
+"to/file.css
+ 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
+         very very very very very very long foo
 
 1 problem (1 error, 0 warnings)"
 `;
@@ -54,20 +55,13 @@ exports[`stringFormatter using GITHUB_WORKSPACE removes rule name from warning t
 exports[`stringFormatter using cwd condenses deprecations and invalid option warnings 1`] = `
 "Invalid Option: Unexpected option for baz
 
-Deprecation Warning: Deprecated foo See: bar"
+Deprecation warnings:
+ - Deprecated foo. See: bar"
 `;
 
 exports[`stringFormatter using cwd handles empty messages 1`] = `
 "path/to/file.css
  1:1  ×     bar
-
-1 problem (1 error, 0 warnings)"
-`;
-
-exports[`stringFormatter using cwd outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
-"path/to/file.css
- 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
-         very very very very very very long foo
 
 1 problem (1 error, 0 warnings)"
 `;
@@ -84,6 +78,14 @@ exports[`stringFormatter using cwd outputs parse errors and warnings without rul
 exports[`stringFormatter using cwd outputs warnings 1`] = `
 "path/to/file.css
  1:1  ×  Unexpected foo  bar
+
+1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using cwd outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
+"path/to/file.css
+ 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
+         very very very very very very long foo
 
 1 problem (1 error, 0 warnings)"
 `;

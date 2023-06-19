@@ -95,14 +95,18 @@ exports[`verboseFormatter using GITHUB_WORKSPACE outputs plugin rule warnings 1`
 exports[`verboseFormatter using GITHUB_WORKSPACE outputs rule warnings with metadata 1`] = `
 "file.css
  1:2  ×  Unexpected foo  no-foo
+ 1:2  ×  Unexpected bar  no-bar
+ 1:2  ×  Unexpected baz  no-baz
 
-1 problem (1 error, 0 warnings)
+3 problems (3 errors, 0 warnings)
 
 1 source checked
  /test-project/path/file.css
 
-1 error found
- no-foo: 1 (maybe fixable)
+3 errors found
+ no-foo: 1 (maybe fixable, deprecated)
+ no-bar: 1 (maybe fixable)
+ no-baz: 1 (deprecated)
 
 You may fix some problems with the "--fix" option."
 `;
@@ -223,14 +227,18 @@ exports[`verboseFormatter using cwd outputs plugin rule warnings 1`] = `
 exports[`verboseFormatter using cwd outputs rule warnings with metadata 1`] = `
 "path/file.css
  1:2  ×  Unexpected foo  no-foo
+ 1:2  ×  Unexpected bar  no-bar
+ 1:2  ×  Unexpected baz  no-baz
 
-1 problem (1 error, 0 warnings)
+3 problems (3 errors, 0 warnings)
 
 1 source checked
  /test-project/path/file.css
 
-1 error found
- no-foo: 1 (maybe fixable)
+3 errors found
+ no-foo: 1 (maybe fixable, deprecated)
+ no-bar: 1 (maybe fixable)
+ no-baz: 1 (deprecated)
 
 You may fix some problems with the "--fix" option."
 `;

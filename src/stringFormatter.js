@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/14.16.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/15.0.0/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -50,22 +50,23 @@ function deprecationsFormatter(results) {
   }
 
   const seenText = new Set();
+  const lines = [];
 
-  return allDeprecationWarnings.reduce((output, warning) => {
-    if (seenText.has(warning.text)) return output;
+  for (const { text, reference } of allDeprecationWarnings) {
+    if (seenText.has(text)) continue;
 
-    seenText.add(warning.text);
+    seenText.add(text);
 
-    output += yellow('Deprecation Warning: ');
-    output += warning.text;
+    let line = ` ${dim('-')} ${text}`;
 
-    if (warning.reference) {
-      output += dim(' See: ');
-      output += dim(underline(warning.reference));
+    if (reference) {
+      line += dim(` See: ${underline(reference)}`);
     }
 
-    return `${output}\n`;
-  }, '\n');
+    lines.push(line);
+  }
+
+  return ['', yellow('Deprecation warnings:'), ...lines, ''].join('\n');
 }
 
 /**
