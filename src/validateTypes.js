@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.2.0/lib/utils/validateTypes.js
+ * https://github.com/stylelint/stylelint/blob/15.3.0/lib/utils/validateTypes.js
  */
 'use strict';
 
@@ -40,6 +40,15 @@ function isNullish(value) {
  */
 function isNumber(value) {
   return typeof value === 'number' || value instanceof Number;
+}
+
+/**
+ * Checks if the value is an object.
+ * @param {unknown} value
+ * @returns {value is object}
+ */
+function isObject(value) {
+  return value !== null && typeof value === 'object';
 }
 
 /**
@@ -120,6 +129,7 @@ module.exports = {
   isFunction,
   isNullish,
   isNumber,
+  isObject,
   isRegExp,
   isString,
   isPlainObject,
