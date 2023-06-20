@@ -15,17 +15,23 @@ if (response.status >= 400) {
 const json = await response.text();
 const upstreamPackageJson = JSON.parse(json);
 
+let hasError = false;
+
 for (const dependency in packageJson.dependencies) {
   const version = packageJson.dependencies[dependency];
   const upstreamVersion = upstreamPackageJson.dependencies[dependency];
 
   if (!upstreamVersion) {
     console.log(`Dependency no longer used: ${dependency}`);
-    process.exit(1);
+    hasError = true;
+    continue;
   }
 
   if (version !== upstreamVersion) {
     console.log(`Dependency version changed: ${dependency} ${packageJson.dependencies[dependency]} → ${upstreamVersion}`);
-    process.exit(1);
+    hasError = true;
+    continue;
   }
 }
+
+process.exit(hasError ? 1 : 0);

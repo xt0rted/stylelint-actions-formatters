@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.3.0/lib/formatters/__tests__/prepareFormatterOutput.js
+ * https://github.com/stylelint/stylelint/blob/15.4.0/lib/formatters/__tests__/prepareFormatterOutput.js
  */
 'use strict';
 

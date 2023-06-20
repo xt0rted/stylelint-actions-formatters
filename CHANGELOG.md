@@ -1,5 +1,10 @@
 # Changelog
 
+## [15.4.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v15.3.0...v15.4.0) - 2023-06-20
+
+- Synced code with [stylelint 15.4.0](https://github.com/stylelint/stylelint/releases/tag/15.4.0)
+- Bumped `supports-hyperlinks` from 2.3.0 to 3.0.0
+
 ## [15.3.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v15.2.0...v15.3.0) - 2023-06-20
 
 - Synced code with [stylelint 15.3.0](https://github.com/stylelint/stylelint/releases/tag/15.3.0)
