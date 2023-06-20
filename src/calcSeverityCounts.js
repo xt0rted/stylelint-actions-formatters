@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.6.1/lib/formatters/calcSeverityCounts.js
+ * https://github.com/stylelint/stylelint/blob/15.6.2/lib/formatters/calcSeverityCounts.js
  */
 'use strict';
 
