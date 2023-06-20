@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.7.0/lib/formatters/terminalLink.js
+ * https://github.com/stylelint/stylelint/blob/15.8.0/lib/formatters/terminalLink.js
  */
 'use strict';
 
