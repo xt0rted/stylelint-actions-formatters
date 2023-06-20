@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.6.2/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/15.6.3/lib/formatters/stringFormatter.js
  */
 'use strict';
 
@@ -14,6 +14,7 @@ const { assertNumber } = require('./validateTypes');
 const preprocessWarnings = require('./preprocessWarnings');
 const terminalLink = require('./terminalLink');
 
+const NON_ASCII_PATTERN = /\P{ASCII}/u;
 const MARGIN_WIDTHS = 9;
 
 /**
@@ -203,6 +204,9 @@ function formatter(messages, source, cwd) {
     return row;
   });
 
+  const messageWidth = getMessageWidth(columnWidths);
+  const hasNonAsciiChar = messages.some((msg) => NON_ASCII_PATTERN.test(msg.text));
+
   output += table
     .table(cleanedMessages, {
       border: table.getBorderCharacters('void'),
@@ -212,8 +216,8 @@ function formatter(messages, source, cwd) {
         2: { alignment: 'center', width: columnWidths[2] },
         3: {
           alignment: 'left',
-          width: getMessageWidth(columnWidths),
-          wrapWord: getMessageWidth(columnWidths) > 1,
+          width: messageWidth,
+          wrapWord: messageWidth > 1 && !hasNonAsciiChar,
         },
         4: { alignment: 'left', width: columnWidths[4], paddingRight: 0 },
       },

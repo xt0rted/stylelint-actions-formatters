@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/15.6.2/lib/formatters/__tests__/stringFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/15.6.3/lib/formatters/__tests__/stringFormatter.test.js
  */
 'use strict';
 
@@ -76,6 +76,27 @@ describe('stringFormatter', () => {
       expect(output).toMatchSnapshot();
     });
 
+    it('outputs warnings contains non-ASCII characters', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+          warnings: [
+            {
+              line: 1,
+              column: 1,
+              rule: 'bar',
+              severity: 'error',
+              text: '简体中文こんにちは안녕하세요',
+            },
+          ],
+        },
+      ];
+
+      const output = prepareFormatterOutput(results, stringFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
     it('removes rule name from warning text', () => {
       const results = [
         {
@@ -135,6 +156,33 @@ describe('stringFormatter', () => {
               rule: 'bar-very-very-very-very-very-long',
               severity: 'error',
               text: 'Unexpected very very very very very very very very very very very very very long foo',
+            },
+          ],
+        },
+      ];
+
+      const output = prepareFormatterOutput(results, stringFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs warnings with more than 80 non-ASCII characters and `process.stdout.columns` equal 90 characters', () => {
+      // For Windows tests
+      process.stdout.isTTY = true;
+      process.stdout.columns = 90;
+
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+          warnings: [
+            {
+              line: 1,
+              column: 1,
+              rule: 'bar-very-very-very-very-very-long',
+              severity: 'error',
+              text:
+                '简体中文こんにちは안녕하세요简体中文こんにちは안녕하세요简体中文こんにちは안녕하세요简体中文こんにちは안녕하세요简体中文' +
+                'こんにちは안녕하세요简体中文こんにちは안녕하세요简体中文こんにちは안녕하세요简体中文こんにちは안녕하세요简体中文こんにちは안녕하세요',
             },
           ],
         },

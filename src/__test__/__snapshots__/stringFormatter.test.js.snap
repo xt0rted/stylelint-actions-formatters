@@ -30,10 +30,29 @@ exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings 1`] = `
 1 problem (1 error, 0 warnings)"
 `;
 
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings contains non-ASCII characters 1`] = `
+"to/file.css
+ 1:1  ×  简体中文こんにちは안녕하세요  bar
+
+1 problem (1 error, 0 warnings)"
+`;
+
 exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
 "to/file.css
  1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
          very very very very very very long foo
+
+1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings with more than 80 non-ASCII characters and \`process.stdout.columns\` equal 90 characters 1`] = `
+"to/file.css
+ 1:1  ×  简体中文こんにちは안녕하세요简体中文こんにち   bar-very-very-very-very-very-long
+         は안녕하세요简体中文こんにちは안녕하세요简体
+         中文こんにちは안녕하세요简体中文こんにちは안
+         녕하세요简体中文こんにちは안녕하세요简体中文
+         こんにちは안녕하세요简体中文こんにちは안녕하
+         세요简体中文こんにちは안녕하세요
 
 1 problem (1 error, 0 warnings)"
 `;
@@ -82,10 +101,29 @@ exports[`stringFormatter using cwd outputs warnings 1`] = `
 1 problem (1 error, 0 warnings)"
 `;
 
+exports[`stringFormatter using cwd outputs warnings contains non-ASCII characters 1`] = `
+"path/to/file.css
+ 1:1  ×  简体中文こんにちは안녕하세요  bar
+
+1 problem (1 error, 0 warnings)"
+`;
+
 exports[`stringFormatter using cwd outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
 "path/to/file.css
  1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
          very very very very very very long foo
+
+1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using cwd outputs warnings with more than 80 non-ASCII characters and \`process.stdout.columns\` equal 90 characters 1`] = `
+"path/to/file.css
+ 1:1  ×  简体中文こんにちは안녕하세요简体中文こんにち   bar-very-very-very-very-very-long
+         は안녕하세요简体中文こんにちは안녕하세요简体
+         中文こんにちは안녕하세요简体中文こんにちは안
+         녕하세요简体中文こんにちは안녕하세요简体中文
+         こんにちは안녕하세요简体中文こんにちは안녕하
+         세요简体中文こんにちは안녕하세요
 
 1 problem (1 error, 0 warnings)"
 `;
