@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.8.0/lib/utils/pluralize.js
+ * https://github.com/stylelint/stylelint/blob/15.9.0/lib/utils/pluralize.js
  */
 'use strict';
 
