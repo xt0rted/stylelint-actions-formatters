@@ -1,10 +1,10 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/15.9.0/lib/formatters/__tests__/stringFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/15.10.0/lib/formatters/__tests__/stringFormatter.test.mjs
  */
-'use strict';
+import { jest } from '@jest/globals';
 
-const prepareFormatterOutput = require('./prepareFormatterOutput');
-const stringFormatter = require('../stringFormatter');
+import prepareFormatterOutput from './prepareFormatterOutput.mjs';
+import stringFormatter from '../stringFormatter.js';
 
 describe('stringFormatter', () => {
   let actualTTY;

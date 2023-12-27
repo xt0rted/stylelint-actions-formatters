@@ -1,10 +1,10 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/15.9.0/lib/formatters/__tests__/verboseFormatter.test.js
+ * Based on https://github.com/stylelint/stylelint/blob/15.10.0/lib/formatters/__tests__/verboseFormatter.test.mjs
  */
-'use strict';
+import { jest } from '@jest/globals';
 
-const prepareFormatterOutput = require('./prepareFormatterOutput');
-const verboseFormatter = require('../verboseFormatter');
+import prepareFormatterOutput from './prepareFormatterOutput.mjs';
+import verboseFormatter from '../verboseFormatter.js';
 
 describe('verboseFormatter', () => {
   beforeAll(() => {

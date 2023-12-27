@@ -1,9 +1,7 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.9.0/lib/formatters/__tests__/prepareFormatterOutput.js
+ * https://github.com/stylelint/stylelint/blob/15.10.0/lib/formatters/__tests__/prepareFormatterOutput.mjs
  */
-'use strict';
-
-const stripAnsi = require('strip-ansi');
+import stripAnsi from 'strip-ansi';
 
 const symbolConversions = new Map();
 
@@ -12,7 +10,7 @@ symbolConversions.set('✔', '√');
 symbolConversions.set('⚠', '‼');
 symbolConversions.set('✖', '×');
 
-module.exports = function prepareFormatterOutput(results, formatter, returnValue) {
+export default function prepareFormatterOutput(results, formatter, returnValue) {
   returnValue = returnValue || {
     ruleMetadata: {},
   };
@@ -23,4 +21,4 @@ module.exports = function prepareFormatterOutput(results, formatter, returnValue
   }
 
   return output;
-};
+}

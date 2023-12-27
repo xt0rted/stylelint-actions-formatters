@@ -35,17 +35,17 @@ const files = [
     source: "lib/utils/validateTypes.js",
   },
   {
-    source: "lib/formatters/__tests__/prepareFormatterOutput.js",
+    source: "lib/formatters/__tests__/prepareFormatterOutput.mjs",
     location: "__test__",
   },
   {
-    source: "lib/formatters/__tests__/stringFormatter.test.js",
+    source: "lib/formatters/__tests__/stringFormatter.test.mjs",
     location: "__test__",
     indent: "  ",
     useSnapshots: true,
   },
   {
-    source: "lib/formatters/__tests__/verboseFormatter.test.js",
+    source: "lib/formatters/__tests__/verboseFormatter.test.mjs",
     location: "__test__",
     indent: "  ",
     useSnapshots: true,
@@ -96,7 +96,7 @@ await asyncForEach(files, async (file) => {
   const response = await fetch(`https://raw.githubusercontent.com/${source.org}/${source.repo}/${source.version}/${file.source}`);
 
   if (response.status >= 400) {
-    throw new Error(`Bad response from server: ${response.status}`);
+    throw new Error(`Bad response from server: ${response.status} ${file.source}`);
   }
 
   const raw = await response.text();
