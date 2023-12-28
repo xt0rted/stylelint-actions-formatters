@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.10.2/lib/formatters/__tests__/prepareFormatterOutput.mjs
+ * https://github.com/stylelint/stylelint/blob/15.10.3/lib/formatters/__tests__/prepareFormatterOutput.mjs
  */
 import stripAnsi from 'strip-ansi';
 
