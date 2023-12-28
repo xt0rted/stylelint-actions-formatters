@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/15.10.0/lib/formatters/__tests__/verboseFormatter.test.mjs
+ * Based on https://github.com/stylelint/stylelint/blob/15.10.1/lib/formatters/__tests__/verboseFormatter.test.mjs
  */
 import { jest } from '@jest/globals';
 
