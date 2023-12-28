@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.10.1/lib/formatters/preprocessWarnings.js
+ * https://github.com/stylelint/stylelint/blob/15.10.2/lib/formatters/preprocessWarnings.js
  */
 'use strict';
 
