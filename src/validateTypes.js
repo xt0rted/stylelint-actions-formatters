@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.10.3/lib/utils/validateTypes.js
+ * https://github.com/stylelint/stylelint/blob/15.11.0/lib/utils/validateTypes.js
  */
 'use strict';
 
