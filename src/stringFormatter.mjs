@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.0.2/lib/formatters/stringFormatter.mjs
+ * https://github.com/stylelint/stylelint/blob/16.1.0/lib/formatters/stringFormatter.mjs
  */
 import { relative, sep } from 'node:path';
 import process from 'node:process';
