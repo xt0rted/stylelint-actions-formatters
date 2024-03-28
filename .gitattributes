@@ -2,6 +2,8 @@
 * text=auto
 
 *.js text eol=lf
+*.cjs text eol=lf
+*.mjs text eol=lf
 *.ts text eol=lf
 
 package.json text eol=lf

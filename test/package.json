@@ -1,0 +1,11 @@
+{
+  "name": "test",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "stylelint *.css --no-color --custom-formatter=../src/stringFormatter.mjs & exit 0"
+  },
+  "devDependencies": {
+    "stylelint": "16.2.0"
+  }
+}

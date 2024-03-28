@@ -1,16 +1,14 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.11.0/lib/utils/validateTypes.js
+ * https://github.com/stylelint/stylelint/blob/16.0.0/lib/utils/validateTypes.mjs
  */
-'use strict';
-
-const { isPlainObject: _isPlainObject } = require('is-plain-object');
+import { isPlainObject as _isPlainObject } from 'is-plain-object';
 
 /**
  * Checks if the value is a boolean or a Boolean object.
  * @param {unknown} value
  * @returns {value is boolean}
  */
-function isBoolean(value) {
+export function isBoolean(value) {
   return typeof value === 'boolean' || value instanceof Boolean;
 }
 
@@ -19,7 +17,7 @@ function isBoolean(value) {
  * @param {unknown} value
  * @returns {value is Function}
  */
-function isFunction(value) {
+export function isFunction(value) {
   return typeof value === 'function' || value instanceof Function;
 }
 
@@ -29,7 +27,7 @@ function isFunction(value) {
  * @param {unknown} value
  * @returns {value is null | undefined}
  */
-function isNullish(value) {
+export function isNullish(value) {
   return value == null;
 }
 
@@ -38,7 +36,7 @@ function isNullish(value) {
  * @param {unknown} value
  * @returns {value is number}
  */
-function isNumber(value) {
+export function isNumber(value) {
   return typeof value === 'number' || value instanceof Number;
 }
 
@@ -47,7 +45,7 @@ function isNumber(value) {
  * @param {unknown} value
  * @returns {value is object}
  */
-function isObject(value) {
+export function isObject(value) {
   return value !== null && typeof value === 'object';
 }
 
@@ -56,7 +54,7 @@ function isObject(value) {
  * @param {unknown} value
  * @returns {value is RegExp}
  */
-function isRegExp(value) {
+export function isRegExp(value) {
   return value instanceof RegExp;
 }
 
@@ -65,7 +63,7 @@ function isRegExp(value) {
  * @param {unknown} value
  * @returns {value is string}
  */
-function isString(value) {
+export function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
 
@@ -74,7 +72,7 @@ function isString(value) {
  * @param {unknown} value
  * @returns {value is Record<string, unknown>}
  */
-function isPlainObject(value) {
+export function isPlainObject(value) {
   return _isPlainObject(value);
 }
 
@@ -84,7 +82,7 @@ function isPlainObject(value) {
  * @param {string} [message]
  * @returns {asserts value}
  */
-function assert(value, message = undefined) {
+export function assert(value, message = undefined) {
   if (message) {
     // eslint-disable-next-line no-console
     console.assert(value, message);
@@ -99,7 +97,7 @@ function assert(value, message = undefined) {
  * @param {unknown} value
  * @returns {asserts value is Function}
  */
-function assertFunction(value) {
+export function assertFunction(value) {
   // eslint-disable-next-line no-console
   console.assert(isFunction(value), `"${value}" must be a function`);
 }
@@ -109,7 +107,7 @@ function assertFunction(value) {
  * @param {unknown} value
  * @returns {asserts value is number}
  */
-function assertNumber(value) {
+export function assertNumber(value) {
   // eslint-disable-next-line no-console
   console.assert(isNumber(value), `"${value}" must be a number`);
 }
@@ -119,23 +117,7 @@ function assertNumber(value) {
  * @param {unknown} value
  * @returns {asserts value is string}
  */
-function assertString(value) {
+export function assertString(value) {
   // eslint-disable-next-line no-console
   console.assert(isString(value), `"${value}" must be a string`);
 }
-
-module.exports = {
-  isBoolean,
-  isFunction,
-  isNullish,
-  isNumber,
-  isObject,
-  isRegExp,
-  isString,
-  isPlainObject,
-
-  assert,
-  assertFunction,
-  assertNumber,
-  assertString,
-};

@@ -1,13 +1,12 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.11.0/lib/formatters/verboseFormatter.js
+ * https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/verboseFormatter.mjs
  */
-'use strict';
+import picocolors from 'picocolors';
+const { underline, red, yellow, dim, green } = picocolors;
 
-const { underline, red, yellow, dim, green } = require('picocolors');
-
-const pluralize = require('./pluralize');
-const stringFormatter = require('./stringFormatter');
-const terminalLink = require('./terminalLink');
+import pluralize from './pluralize.mjs';
+import stringFormatter from './stringFormatter.mjs';
+import terminalLink from './terminalLink.mjs';
 
 /** @typedef {import('stylelint').Formatter} Formatter */
 /** @typedef {import('stylelint').LintResult} LintResult */
@@ -18,7 +17,7 @@ const terminalLink = require('./terminalLink');
 /**
  * @type {Formatter}
  */
-module.exports = function verboseFormatter(results, returnValue) {
+export default function verboseFormatter(results, returnValue) {
   let output = stringFormatter(results, returnValue);
 
   if (output === '') {
@@ -100,7 +99,7 @@ module.exports = function verboseFormatter(results, returnValue) {
   }
 
   return `${output}\n`;
-};
+}
 
 /**
  * @template {string} K

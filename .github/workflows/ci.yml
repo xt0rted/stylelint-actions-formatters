@@ -23,10 +23,9 @@ jobs:
       fail-fast: false
       matrix:
         node:
-          - 14
-          - 16
           - 18
           - 20
+          - current
         os:
           - macos-latest
           - ubuntu-latest
@@ -44,3 +43,14 @@ jobs:
       - run: npm ci
 
       - run: npm test
+
+      # Integration tests
+      - uses: xt0rted/stylelint-problem-matcher@v1.3.0
+
+      - name: Install integration test dependencies
+        run: npm install
+        working-directory: test
+
+      - name: Run integration tests
+        run: npm test
+        working-directory: test
