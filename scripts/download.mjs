@@ -14,39 +14,39 @@ const source = {
 
 const files = [
   {
-    source: "lib/formatters/calcSeverityCounts.js",
+    source: "lib/formatters/calcSeverityCounts.mjs",
   },
   {
-    source: "lib/formatters/preprocessWarnings.js",
+    source: "lib/formatters/preprocessWarnings.mjs",
   },
   {
-    source: "lib/formatters/stringFormatter.js",
+    source: "lib/formatters/stringFormatter.mjs",
   },
   {
-    source: "lib/formatters/terminalLink.js",
+    source: "lib/formatters/terminalLink.mjs",
   },
   {
-    source: "lib/formatters/verboseFormatter.js",
+    source: "lib/formatters/verboseFormatter.mjs",
   },
   {
-    source: "lib/utils/pluralize.js",
+    source: "lib/utils/pluralize.mjs",
   },
   {
-    source: "lib/utils/validateTypes.js",
+    source: "lib/utils/validateTypes.mjs",
   },
   {
-    source: "lib/formatters/__tests__/prepareFormatterOutput.mjs",
-    location: "__test__",
+    source: "lib/testUtils/getCleanOutput.mjs",
+    location: "__tests__",
   },
   {
     source: "lib/formatters/__tests__/stringFormatter.test.mjs",
-    location: "__test__",
+    location: "__tests__",
     indent: "  ",
     useSnapshots: true,
   },
   {
     source: "lib/formatters/__tests__/verboseFormatter.test.mjs",
-    location: "__test__",
+    location: "__tests__",
     indent: "  ",
     useSnapshots: true,
   },
@@ -64,6 +64,7 @@ function formatCode({ file, raw }) {
 
   // Normalize imports
   raw = raw.replace(/\.\/utils/gm, "");
+  raw = raw.replace(/\.\/\.\.\/testUtils/gm, "");
 
   // We use snapshots for all of these files
   if (file.useSnapshots) {
@@ -81,6 +82,16 @@ function formatCode({ file, raw }) {
       .split("\n")
       .map(line => {
         if (line === ""){
+          return line;
+        }
+
+        if (
+          line.startsWith("import")
+          || line.startsWith("describe('string")
+          || line.startsWith("describe('verbose")
+          || line.startsWith("  let")
+          || line.startsWith("})")
+        ) {
           return line;
         }
 

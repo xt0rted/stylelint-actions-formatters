@@ -1,10 +1,12 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/15.11.0/lib/formatters/__tests__/verboseFormatter.test.mjs
+ * Based on https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/__tests__/verboseFormatter.test.mjs
  */
+import process from 'node:process';
+
 import { jest } from '@jest/globals';
 
-import prepareFormatterOutput from './prepareFormatterOutput.mjs';
-import verboseFormatter from '../verboseFormatter.js';
+import { getCleanFormatterOutput } from './getCleanOutput.mjs';
+import verboseFormatter from '../verboseFormatter.mjs';
 
 describe('verboseFormatter', () => {
   beforeAll(() => {
@@ -42,7 +44,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -66,7 +68,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -94,7 +96,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
 
@@ -124,7 +126,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
 
@@ -172,7 +174,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -194,7 +196,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -210,7 +212,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -234,7 +236,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -258,7 +260,7 @@ describe('verboseFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, verboseFormatter);
+      const output = getCleanFormatterOutput(results, verboseFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -303,7 +305,7 @@ describe('verboseFormatter', () => {
         },
       };
 
-      const output = prepareFormatterOutput(results, verboseFormatter, returnValue);
+      const output = getCleanFormatterOutput(results, verboseFormatter, returnValue);
 
       expect(output).toMatchSnapshot();
     });

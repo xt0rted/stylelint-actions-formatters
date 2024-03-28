@@ -1,8 +1,6 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.11.0/lib/formatters/calcSeverityCounts.js
+ * https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/calcSeverityCounts.mjs
  */
-'use strict';
-
 /**
  * @typedef {import('stylelint').Severity} Severity
  *
@@ -10,7 +8,7 @@
  * @param {Record<Severity, number>} counts
  * @returns {void}
  */
-module.exports = function calcSeverityCounts(severity, counts) {
+export default function calcSeverityCounts(severity, counts) {
   switch (severity) {
     case 'error':
       counts.error += 1;
@@ -21,4 +19,4 @@ module.exports = function calcSeverityCounts(severity, counts) {
     default:
       throw new Error(`Unknown severity: "${severity}"`);
   }
-};
+}

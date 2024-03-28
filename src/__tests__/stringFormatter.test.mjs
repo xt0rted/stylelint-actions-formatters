@@ -1,10 +1,12 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/15.11.0/lib/formatters/__tests__/stringFormatter.test.mjs
+ * Based on https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/__tests__/stringFormatter.test.mjs
  */
+import process from 'node:process';
+
 import { jest } from '@jest/globals';
 
-import prepareFormatterOutput from './prepareFormatterOutput.mjs';
-import stringFormatter from '../stringFormatter.js';
+import { getCleanFormatterOutput } from './getCleanOutput.mjs';
+import stringFormatter from '../stringFormatter.mjs';
 
 describe('stringFormatter', () => {
   let actualTTY;
@@ -71,7 +73,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -92,7 +94,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -113,7 +115,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -136,7 +138,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -161,7 +163,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -188,7 +190,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -227,7 +229,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -241,7 +243,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toBe('');
     });
@@ -262,7 +264,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });
@@ -296,7 +298,7 @@ describe('stringFormatter', () => {
         },
       ];
 
-      const output = prepareFormatterOutput(results, stringFormatter);
+      const output = getCleanFormatterOutput(results, stringFormatter);
 
       expect(output).toMatchSnapshot();
     });

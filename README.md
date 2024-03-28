@@ -21,7 +21,7 @@ It also has a peer dependency on that version.
 ### Verbose formatter
 
 ```console
- stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters/src/verboseFormatter.js
+ stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters/src/verboseFormatter.mjs
 ```
 
 > Note: If you're not running on GitHub Actions then these reporters will function the same as the ones that ship with Stylelint.

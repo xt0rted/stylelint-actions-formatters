@@ -1,7 +1,7 @@
-module.exports = {
+export default {
   clearMocks: true,
   testEnvironment: 'node',
-  testMatch: ['**/*.test.{js,mjs}'],
+  testMatch: ['**/*.test.mjs'],
   testRunner: 'jest-circus/runner',
   verbose: true,
 };

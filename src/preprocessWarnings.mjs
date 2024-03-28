@@ -1,8 +1,6 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.11.0/lib/formatters/preprocessWarnings.js
+ * https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/preprocessWarnings.mjs
  */
-'use strict';
-
 /** @typedef {import('stylelint').LintResult} LintResult */
 /** @typedef {LintResult['parseErrors'][0]} ParseError */
 /** @typedef {LintResult['warnings'][0]} Warning */
@@ -15,7 +13,7 @@
  * @param {LintResult} result
  * @returns {LintResult}
  */
-module.exports = function preprocessWarnings(result) {
+export default function preprocessWarnings(result) {
   for (const error of result.parseErrors || []) {
     result.warnings.push(parseErrorToWarning(error));
   }
@@ -27,7 +25,7 @@ module.exports = function preprocessWarnings(result) {
   result.warnings.sort(byLocationOrder);
 
   return result;
-};
+}
 
 /**
  * @param {ParseError} error

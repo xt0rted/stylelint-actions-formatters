@@ -1,9 +1,7 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.11.0/lib/formatters/terminalLink.js
+ * https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/terminalLink.mjs
  */
-'use strict';
-
-const supportsHyperlinks = require('supports-hyperlinks');
+import supportsHyperlinks from 'supports-hyperlinks';
 
 // ANSI escapes
 const OSC = '\u001B]';
@@ -17,10 +15,10 @@ const SEP = ';';
  * @param {string} url
  * @returns {string}
  */
-module.exports = function terminalLink(text, url) {
+export default function terminalLink(text, url) {
   if (supportsHyperlinks.stdout) {
     return [OSC, '8', SEP, SEP, url, BEL, text, OSC, '8', SEP, SEP, BEL].join('');
   }
 
   return text;
-};
+}

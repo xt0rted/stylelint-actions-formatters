@@ -1,18 +1,20 @@
 /**
- * https://github.com/stylelint/stylelint/blob/15.11.0/lib/formatters/stringFormatter.js
+ * https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/stringFormatter.mjs
  */
-'use strict';
+import { relative, sep } from 'node:path';
+import process from 'node:process';
 
-const path = require('path');
-const stringWidth = require('string-width');
-const table = require('table');
-const { yellow, dim, underline, blue, red, green } = require('picocolors');
+import picocolors from 'picocolors';
+import stringWidth from 'string-width';
+import table from 'table';
 
-const calcSeverityCounts = require('./calcSeverityCounts');
-const pluralize = require('./pluralize');
-const { assertNumber } = require('./validateTypes');
-const preprocessWarnings = require('./preprocessWarnings');
-const terminalLink = require('./terminalLink');
+import { assertNumber } from './validateTypes.mjs';
+import calcSeverityCounts from './calcSeverityCounts.mjs';
+import pluralize from './pluralize.mjs';
+import preprocessWarnings from './preprocessWarnings.mjs';
+import terminalLink from './terminalLink.mjs';
+
+const { yellow, dim, underline, blue, red, green } = picocolors;
 
 const NON_ASCII_PATTERN = /\P{ASCII}/u;
 const MARGIN_WIDTHS = 9;
@@ -98,7 +100,7 @@ function logFrom(fromValue, cwd) {
     return underline(fromValue);
   }
 
-  const filePath = path.relative(cwd, fromValue).split(path.sep).join('/');
+  const filePath = relative(cwd, fromValue).split(sep).join('/');
 
   return terminalLink(filePath, `file://${fromValue}`);
 }
@@ -233,7 +235,7 @@ function formatter(messages, source, cwd) {
 /**
  * @type {import('stylelint').Formatter}
  */
-module.exports = function stringFormatter(results, returnValue) {
+export default function stringFormatter(results, returnValue) {
   let output = invalidOptionsFormatter(results);
 
   output += deprecationsFormatter(results);
@@ -276,4 +278,4 @@ module.exports = function stringFormatter(results, returnValue) {
   }
 
   return output;
-};
+}
