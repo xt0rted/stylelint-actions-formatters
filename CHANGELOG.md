@@ -1,5 +1,9 @@
 # Changelog
 
+## [16.3.1](https://github.com/xt0rted/stylelint-actions-formatters/compare/v16.3.0...v16.3.1) - 2024-03-28
+
+- Synced code with [stylelint 16.3.1](https://github.com/stylelint/stylelint/releases/tag/16.3.1)
+
 ## [16.3.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v16.2.1...v16.3.0) - 2024-03-28
 
 - Synced code with [stylelint 16.3.0](https://github.com/stylelint/stylelint/releases/tag/16.3.0)

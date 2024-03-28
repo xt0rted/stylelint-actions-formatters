@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.3.0/lib/formatters/verboseFormatter.mjs
+ * https://github.com/stylelint/stylelint/blob/16.3.1/lib/formatters/verboseFormatter.mjs
  */
 import picocolors from 'picocolors';
 const { underline, red, yellow, dim, green } = picocolors;

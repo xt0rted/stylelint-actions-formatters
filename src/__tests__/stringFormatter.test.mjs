@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/16.3.0/lib/formatters/__tests__/stringFormatter.test.mjs
+ * Based on https://github.com/stylelint/stylelint/blob/16.3.1/lib/formatters/__tests__/stringFormatter.test.mjs
  */
 import process from 'node:process';
 
