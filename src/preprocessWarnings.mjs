@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.1.0/lib/formatters/preprocessWarnings.mjs
+ * https://github.com/stylelint/stylelint/blob/16.2.0/lib/formatters/preprocessWarnings.mjs
  */
 /** @typedef {import('stylelint').LintResult} LintResult */
 /** @typedef {LintResult['parseErrors'][0]} ParseError */
