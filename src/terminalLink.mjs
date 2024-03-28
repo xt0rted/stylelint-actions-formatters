@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.2.0/lib/formatters/terminalLink.mjs
+ * https://github.com/stylelint/stylelint/blob/16.2.1/lib/formatters/terminalLink.mjs
  */
 import supportsHyperlinks from 'supports-hyperlinks';
 
