@@ -1,6 +1,6 @@
 {
   "name": "stylelint-actions-formatters",
-  "version": "16.2.1",
+  "version": "16.3.0",
   "description": "These are copies of the built-in formatters with modified file paths so that Checks Annotations can be created on GitHub Actions.\r This package should be used with the `xt0rted/stylelint-problem-matcher` action.",
   "main": "src/stringFormatter.mjs",
   "files": [
@@ -52,6 +52,6 @@
     "jest": "^29.7.0"
   },
   "peerDependencies": {
-    "stylelint": "^16.2.1"
+    "stylelint": "^16.3.0"
   }
 }

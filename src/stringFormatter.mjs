@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.2.1/lib/formatters/stringFormatter.mjs
+ * https://github.com/stylelint/stylelint/blob/16.3.0/lib/formatters/stringFormatter.mjs
  */
 import { relative, sep } from 'node:path';
 import process from 'node:process';
@@ -213,7 +213,7 @@ function formatter(messages, source, cwd) {
     .table(cleanedMessages, {
       border: table.getBorderCharacters('void'),
       columns: {
-        0: { alignment: 'right', width: columnWidths[0], paddingRight: 0 },
+        0: { alignment: 'right', width: columnWidths[0], paddingRight: 0, paddingLeft: 2 },
         1: { alignment: 'left', width: columnWidths[1] },
         2: { alignment: 'center', width: columnWidths[2] },
         3: {
@@ -240,7 +240,8 @@ export default function stringFormatter(results, returnValue) {
 
   output += deprecationsFormatter(results);
 
-  const counts = { error: 0, warning: 0 };
+  const resultCounts = { error: 0, warning: 0 };
+  const fixableCounts = { error: 0, warning: 0 };
 
   output = results.reduce((accum, result) => {
     preprocessWarnings(result);
@@ -252,7 +253,12 @@ export default function stringFormatter(results, returnValue) {
     );
 
     for (const warning of result.warnings) {
-      calcSeverityCounts(warning.severity, counts);
+      calcSeverityCounts(warning.severity, resultCounts);
+      const fixable = returnValue.ruleMetadata?.[warning.rule]?.fixable;
+
+      if (fixable === true) {
+        calcSeverityCounts(warning.severity, fixableCounts);
+      }
     }
 
     return accum;
@@ -262,19 +268,41 @@ export default function stringFormatter(results, returnValue) {
   output = output.trim();
 
   if (output !== '') {
-    output = `\n${output}\n\n`;
+    output = `\n${output}\n`;
 
-    const errorCount = counts.error;
-    const warningCount = counts.warning;
+    const errorCount = resultCounts.error;
+    const warningCount = resultCounts.warning;
     const total = errorCount + warningCount;
 
     if (total > 0) {
       const error = red(`${errorCount} ${pluralize('error', errorCount)}`);
       const warning = yellow(`${warningCount} ${pluralize('warning', warningCount)}`);
-      const tally = `${total} ${pluralize('problem', total)} (${error}, ${warning})`;
+      const symbol = errorCount > 0 ? symbols.error : symbols.warning;
 
-      output += `${tally}\n\n`;
+      output += `\n${symbol} ${total} ${pluralize('problem', total)} (${error}, ${warning})`;
     }
+
+    const fixErrorCount = fixableCounts.error;
+    const fixWarningCount = fixableCounts.warning;
+
+    if (fixErrorCount > 0 || fixWarningCount > 0) {
+      let fixErrorText;
+      let fixWarningText;
+
+      if (fixErrorCount > 0) {
+        fixErrorText = `${fixErrorCount} ${pluralize('error', fixErrorCount)}`;
+      }
+
+      if (fixWarningCount > 0) {
+        fixWarningText = `${fixWarningCount} ${pluralize('warning', fixWarningCount)}`;
+      }
+
+      const countText = [fixErrorText, fixWarningText].filter(Boolean).join(' and ');
+
+      output += `\n  ${countText} potentially fixable with the "--fix" option.`;
+    }
+
+    output += '\n\n';
   }
 
   return output;

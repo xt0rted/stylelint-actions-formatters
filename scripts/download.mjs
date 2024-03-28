@@ -74,6 +74,7 @@ function formatCode({ file, raw }) {
   // To verify our changes we need to move the paths to a sub-folder
   if (file.source.match(`_tests_`)) {
     raw = raw.replace(/source: 'path\//gm, "source: '/test-project/path/");
+    raw = raw.replace(/source: 'file/gm, "source: '/test-project/path/to/file");
   }
 
   // Tests that verify sub-folders run against multiple configurations

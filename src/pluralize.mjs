@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.2.1/lib/utils/pluralize.mjs
+ * https://github.com/stylelint/stylelint/blob/16.3.0/lib/utils/pluralize.mjs
  */
 /**
  * Returns the plural form of the given word.

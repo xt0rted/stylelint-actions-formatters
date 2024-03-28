@@ -51,6 +51,10 @@ jobs:
         run: npm install
         working-directory: test
 
-      - name: Run integration tests
-        run: npm test
+      - name: Run integration tests - stringFormatter
+        run: npm run test:string
+        working-directory: test
+
+      - name: Run integration tests - verboseFormatter
+        run: npm run test:verbose
         working-directory: test

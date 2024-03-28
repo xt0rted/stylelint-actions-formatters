@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/16.2.1/lib/formatters/__tests__/verboseFormatter.test.mjs
+ * Based on https://github.com/stylelint/stylelint/blob/16.3.0/lib/formatters/__tests__/verboseFormatter.test.mjs
  */
 import process from 'node:process';
 
@@ -204,7 +204,7 @@ describe('verboseFormatter', () => {
     it('outputs one ignored file', () => {
       const results = [
         {
-          source: 'file.css',
+          source: '/test-project/path/to/file.css',
           warnings: [],
           deprecations: [],
           invalidOptionWarnings: [],
@@ -244,7 +244,7 @@ describe('verboseFormatter', () => {
     it('outputs plugin rule warnings', () => {
       const results = [
         {
-          source: '/test-project/path/file.css',
+          source: '/test-project/path/to/file.css',
           errored: true,
           warnings: [
             {
@@ -268,7 +268,7 @@ describe('verboseFormatter', () => {
     it('outputs rule warnings with metadata', () => {
       const results = [
         {
-          source: '/test-project/path/file.css',
+          source: '/test-project/path/to/file.css',
           errored: true,
           warnings: [
             {

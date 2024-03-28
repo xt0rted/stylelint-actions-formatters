@@ -1,5 +1,5 @@
 /**
- * Based on https://github.com/stylelint/stylelint/blob/16.2.1/lib/formatters/__tests__/stringFormatter.test.mjs
+ * Based on https://github.com/stylelint/stylelint/blob/16.3.0/lib/formatters/__tests__/stringFormatter.test.mjs
  */
 import process from 'node:process';
 
@@ -68,6 +68,249 @@ describe('stringFormatter', () => {
               rule: 'bar',
               severity: 'error',
               text: 'Unexpected foo',
+            },
+          ],
+        },
+      ];
+
+      const output = getCleanFormatterOutput(results, stringFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs fixable error and warning counts', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-foo',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-bar',
+              severity: 'error',
+              text: 'Unexpected bar',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-baz',
+              severity: 'warning',
+              text: 'Unexpected baz',
+            },
+          ],
+        },
+      ];
+
+      const returnValue = {
+        ruleMetadata: {
+          'no-foo': { fixable: true },
+          'no-bar': { fixable: false },
+          'no-baz': { fixable: true },
+        },
+      };
+
+      const output = getCleanFormatterOutput(results, stringFormatter, returnValue);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs fixable error counts', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-foo',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-bar',
+              severity: 'error',
+              text: 'Unexpected bar',
+            },
+          ],
+        },
+      ];
+
+      const returnValue = {
+        ruleMetadata: {
+          'no-foo': { fixable: true },
+        },
+      };
+
+      const output = getCleanFormatterOutput(results, stringFormatter, returnValue);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs fixable warning counts', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-foo',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-bar',
+              severity: 'warning',
+              text: 'Unexpected bar',
+            },
+          ],
+        },
+      ];
+
+      const returnValue = {
+        ruleMetadata: {
+          'no-bar': { fixable: true },
+        },
+      };
+
+      const output = getCleanFormatterOutput(results, stringFormatter, returnValue);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs fixable warning counts with invalid or missing ruleMetadata', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-foo',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-bar',
+              severity: 'warning',
+              text: 'Unexpected bar',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-baz',
+              severity: 'warning',
+              text: 'Unexpected baz',
+            },
+          ],
+        },
+      ];
+
+      const returnValue = {
+        ruleMetadata: {
+          'no-foo': {}, // fixable should exist
+          'no-bar': { fixable: 900 }, // fixable should be a boolean
+          'no-baz': { fixable: true },
+        },
+      };
+
+      const output = getCleanFormatterOutput(results, stringFormatter, returnValue);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs results with missing ruleMetadata object', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-foo',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-bar',
+              severity: 'warning',
+              text: 'Unexpected bar',
+            },
+          ],
+        },
+      ];
+
+      const returnValue = { ruleMetadata: null };
+
+      const output = getCleanFormatterOutput(results, stringFormatter, returnValue);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs warnings using the appropriate icon', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+          warnings: [
+            {
+              line: 1,
+              column: 1,
+              rule: 'bar',
+              severity: 'warning',
+              text: 'Unexpected foo',
+            },
+          ],
+        },
+      ];
+
+      const output = getCleanFormatterOutput(results, stringFormatter);
+
+      expect(output).toMatchSnapshot();
+    });
+
+    it('outputs warnings for multiple sources', () => {
+      const results = [
+        {
+          source: '/test-project/path/to/file-a.css',
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-foo',
+              severity: 'error',
+              text: 'Unexpected foo',
+            },
+          ],
+        },
+        {
+          source: '/test-project/path/to/file-b.css',
+          warnings: [
+            {
+              line: 1,
+              column: 2,
+              rule: 'no-bar',
+              severity: 'warning',
+              text: 'Unexpected bar',
             },
           ],
         },
@@ -168,6 +411,37 @@ describe('stringFormatter', () => {
       expect(output).toMatchSnapshot();
     });
 
+    it('outputs warnings with more than 80 characters (no wordbreaks) and `process.stdout.columns` equal 90 characters', () => {
+      const columns = 90;
+
+      // For Windows tests
+      process.stdout.isTTY = true;
+      process.stdout.columns = columns;
+
+      const results = [
+        {
+          source: '/test-project/path/to/file.css',
+          warnings: [
+            {
+              line: 1,
+              column: 1,
+              rule: 'bar-very-very-very-very-very-long',
+              severity: 'error',
+              text: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+            },
+          ],
+        },
+      ];
+
+      const output = getCleanFormatterOutput(results, stringFormatter);
+
+      const longestLine = output.split('\n')[1];
+
+      expect(longestLine).toHaveLength(columns);
+
+      expect(output).toMatchSnapshot();
+    });
+
     it('outputs warnings with more than 80 non-ASCII characters and `process.stdout.columns` equal 90 characters', () => {
       // For Windows tests
       process.stdout.isTTY = true;
@@ -198,7 +472,7 @@ describe('stringFormatter', () => {
     it('condenses deprecations and invalid option warnings', () => {
       const results = [
         {
-          source: 'file.css',
+          source: '/test-project/path/to/file.css',
           deprecations: [
             {
               text: 'Deprecated foo.',
@@ -213,7 +487,7 @@ describe('stringFormatter', () => {
           warnings: [],
         },
         {
-          source: 'file2.css',
+          source: '/test-project/path/to/file2.css',
           deprecations: [
             {
               text: 'Deprecated foo.',
@@ -237,7 +511,7 @@ describe('stringFormatter', () => {
     it('handles ignored file', () => {
       const results = [
         {
-          source: 'file.css',
+          source: '/test-project/path/to/file.css',
           warnings: [],
           ignored: true,
         },

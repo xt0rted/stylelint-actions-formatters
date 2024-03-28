@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.2.1/lib/formatters/verboseFormatter.mjs
+ * https://github.com/stylelint/stylelint/blob/16.3.0/lib/formatters/verboseFormatter.mjs
  */
 import picocolors from 'picocolors';
 const { underline, red, yellow, dim, green } = picocolors;
@@ -48,7 +48,7 @@ export default function verboseFormatter(results, returnValue) {
       sourceText += ' (ignored)';
     }
 
-    output += formatting(` ${sourceText}\n`);
+    output += formatting(`  ${sourceText}\n`);
   }
 
   const warnings = results.flatMap((r) => r.warnings);
@@ -57,7 +57,6 @@ export default function verboseFormatter(results, returnValue) {
     output += '\n0 problems found\n';
   } else {
     const warningsBySeverity = groupBy(warnings, (w) => w.severity);
-    let fixableProblemsFound = false;
 
     /**
      * @param {Severity} severity
@@ -82,20 +81,12 @@ export default function verboseFormatter(results, returnValue) {
 
         additional = additional ? ` (${additional})` : '';
 
-        output += dim(` ${ruleLink(rule, meta)}: ${list.length}${additional}\n`);
-
-        if (!fixableProblemsFound && meta.fixable) {
-          fixableProblemsFound = true;
-        }
+        output += dim(`  ${ruleLink(rule, meta)}: ${list.length}${additional}\n`);
       }
     };
 
     printProblems('error');
     printProblems('warning');
-
-    if (fixableProblemsFound) {
-      output += yellow('\nYou may fix some problems with the "--fix" option.\n');
-    }
   }
 
   return `${output}\n`;

@@ -9,66 +9,138 @@ Deprecation warnings:
 
 exports[`stringFormatter using GITHUB_WORKSPACE handles empty messages 1`] = `
 "to/file.css
- 1:1  ×     bar
+  1:1  ×     bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs fixable error and warning counts 1`] = `
+"to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ×  Unexpected bar  no-bar
+  1:2  ‼  Unexpected baz  no-baz
+
+× 3 problems (2 errors, 1 warning)
+  1 error and 1 warning potentially fixable with the "--fix" option."
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs fixable error counts 1`] = `
+"to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ×  Unexpected bar  no-bar
+
+× 2 problems (2 errors, 0 warnings)
+  1 error potentially fixable with the "--fix" option."
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs fixable warning counts 1`] = `
+"to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ‼  Unexpected bar  no-bar
+
+× 2 problems (1 error, 1 warning)
+  1 warning potentially fixable with the "--fix" option."
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs fixable warning counts with invalid or missing ruleMetadata 1`] = `
+"to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ‼  Unexpected bar  no-bar
+  1:2  ‼  Unexpected baz  no-baz
+
+× 3 problems (1 error, 2 warnings)
+  1 warning potentially fixable with the "--fix" option."
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE outputs parse errors and warnings without rule and severity 1`] = `
 "to/file.css
- 1:1  ×  Cannot parse foo  foo-error
- 2:1  ×  Anonymous error
- 3:1  ×  Disallow bar      no-bar
+  1:1  ×  Cannot parse foo  foo-error
+  2:1  ×  Anonymous error
+  3:1  ×  Disallow bar      no-bar
 
-3 problems (3 errors, 0 warnings)"
+× 3 problems (3 errors, 0 warnings)"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs results with missing ruleMetadata object 1`] = `
+"to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ‼  Unexpected bar  no-bar
+
+× 2 problems (1 error, 1 warning)"
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings 1`] = `
 "to/file.css
- 1:1  ×  Unexpected foo  bar
+  1:1  ×  Unexpected foo  bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings contains non-ASCII characters 1`] = `
 "to/file.css
- 1:1  ×  简体中文こんにちは안녕하세요  bar
+  1:1  ×  简体中文こんにちは안녕하세요  bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings for multiple sources 1`] = `
+"to/file-a.css
+  1:2  ×  Unexpected foo  no-foo
+
+to/file-b.css
+  1:2  ‼  Unexpected bar  no-bar
+
+× 2 problems (1 error, 1 warning)"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings using the appropriate icon 1`] = `
+"to/file.css
+  1:1  ‼  Unexpected foo  bar
+
+‼ 1 problem (0 errors, 1 warning)"
+`;
+
+exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings with more than 80 characters (no wordbreaks) and \`process.stdout.columns\` equal 90 characters 1`] = `
+"to/file.css
+  1:1  ×  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  bar-very-very-very-very-very-long
+          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          aaaaaaaaaa
+
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
 "to/file.css
- 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
-         very very very very very very long foo
+  1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
+          very very very very very very long foo
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings with more than 80 non-ASCII characters and \`process.stdout.columns\` equal 90 characters 1`] = `
 "to/file.css
- 1:1  ×  简体中文こんにちは안녕하세요简体中文こんにち   bar-very-very-very-very-very-long
-         は안녕하세요简体中文こんにちは안녕하세요简体
-         中文こんにちは안녕하세요简体中文こんにちは안
-         녕하세요简体中文こんにちは안녕하세요简体中文
-         こんにちは안녕하세요简体中文こんにちは안녕하
-         세요简体中文こんにちは안녕하세요
+  1:1  ×  简体中文こんにちは안녕하세요简体中文こんにち   bar-very-very-very-very-very-long
+          は안녕하세요简体中文こんにちは안녕하세요简体
+          中文こんにちは안녕하세요简体中文こんにちは안
+          녕하세요简体中文こんにちは안녕하세요简体中文
+          こんにちは안녕하세요简体中文こんにちは안녕하
+          세요简体中文こんにちは안녕하세요
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE outputs warnings without stdout \`TTY\` 1`] = `
 "to/file.css
- 1:1  ×  Unexpected foo  bar
+  1:1  ×  Unexpected foo  bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using GITHUB_WORKSPACE removes rule name from warning text 1`] = `
 "to/file.css
- 1:1  ‼  Unexpected foo  rule-name
+  1:1  ‼  Unexpected foo  rule-name
 
-1 problem (0 errors, 1 warning)"
+‼ 1 problem (0 errors, 1 warning)"
 `;
 
 exports[`stringFormatter using cwd condenses deprecations and invalid option warnings 1`] = `
@@ -80,64 +152,136 @@ Deprecation warnings:
 
 exports[`stringFormatter using cwd handles empty messages 1`] = `
 "path/to/file.css
- 1:1  ×     bar
+  1:1  ×     bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using cwd outputs fixable error and warning counts 1`] = `
+"path/to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ×  Unexpected bar  no-bar
+  1:2  ‼  Unexpected baz  no-baz
+
+× 3 problems (2 errors, 1 warning)
+  1 error and 1 warning potentially fixable with the "--fix" option."
+`;
+
+exports[`stringFormatter using cwd outputs fixable error counts 1`] = `
+"path/to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ×  Unexpected bar  no-bar
+
+× 2 problems (2 errors, 0 warnings)
+  1 error potentially fixable with the "--fix" option."
+`;
+
+exports[`stringFormatter using cwd outputs fixable warning counts 1`] = `
+"path/to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ‼  Unexpected bar  no-bar
+
+× 2 problems (1 error, 1 warning)
+  1 warning potentially fixable with the "--fix" option."
+`;
+
+exports[`stringFormatter using cwd outputs fixable warning counts with invalid or missing ruleMetadata 1`] = `
+"path/to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ‼  Unexpected bar  no-bar
+  1:2  ‼  Unexpected baz  no-baz
+
+× 3 problems (1 error, 2 warnings)
+  1 warning potentially fixable with the "--fix" option."
 `;
 
 exports[`stringFormatter using cwd outputs parse errors and warnings without rule and severity 1`] = `
 "path/to/file.css
- 1:1  ×  Cannot parse foo  foo-error
- 2:1  ×  Anonymous error
- 3:1  ×  Disallow bar      no-bar
+  1:1  ×  Cannot parse foo  foo-error
+  2:1  ×  Anonymous error
+  3:1  ×  Disallow bar      no-bar
 
-3 problems (3 errors, 0 warnings)"
+× 3 problems (3 errors, 0 warnings)"
+`;
+
+exports[`stringFormatter using cwd outputs results with missing ruleMetadata object 1`] = `
+"path/to/file.css
+  1:2  ×  Unexpected foo  no-foo
+  1:2  ‼  Unexpected bar  no-bar
+
+× 2 problems (1 error, 1 warning)"
 `;
 
 exports[`stringFormatter using cwd outputs warnings 1`] = `
 "path/to/file.css
- 1:1  ×  Unexpected foo  bar
+  1:1  ×  Unexpected foo  bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using cwd outputs warnings contains non-ASCII characters 1`] = `
 "path/to/file.css
- 1:1  ×  简体中文こんにちは안녕하세요  bar
+  1:1  ×  简体中文こんにちは안녕하세요  bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
+`;
+
+exports[`stringFormatter using cwd outputs warnings for multiple sources 1`] = `
+"path/to/file-a.css
+  1:2  ×  Unexpected foo  no-foo
+
+path/to/file-b.css
+  1:2  ‼  Unexpected bar  no-bar
+
+× 2 problems (1 error, 1 warning)"
+`;
+
+exports[`stringFormatter using cwd outputs warnings using the appropriate icon 1`] = `
+"path/to/file.css
+  1:1  ‼  Unexpected foo  bar
+
+‼ 1 problem (0 errors, 1 warning)"
+`;
+
+exports[`stringFormatter using cwd outputs warnings with more than 80 characters (no wordbreaks) and \`process.stdout.columns\` equal 90 characters 1`] = `
+"path/to/file.css
+  1:1  ×  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  bar-very-very-very-very-very-long
+          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+          aaaaaaaaaa
+
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using cwd outputs warnings with more than 80 characters and \`process.stdout.columns\` equal 90 characters 1`] = `
 "path/to/file.css
- 1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
-         very very very very very very long foo
+  1:1  ×  Unexpected very very very very very very very  bar-very-very-very-very-very-long
+          very very very very very very long foo
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using cwd outputs warnings with more than 80 non-ASCII characters and \`process.stdout.columns\` equal 90 characters 1`] = `
 "path/to/file.css
- 1:1  ×  简体中文こんにちは안녕하세요简体中文こんにち   bar-very-very-very-very-very-long
-         は안녕하세요简体中文こんにちは안녕하세요简体
-         中文こんにちは안녕하세요简体中文こんにちは안
-         녕하세요简体中文こんにちは안녕하세요简体中文
-         こんにちは안녕하세요简体中文こんにちは안녕하
-         세요简体中文こんにちは안녕하세요
+  1:1  ×  简体中文こんにちは안녕하세요简体中文こんにち   bar-very-very-very-very-very-long
+          は안녕하세요简体中文こんにちは안녕하세요简体
+          中文こんにちは안녕하세요简体中文こんにちは안
+          녕하세요简体中文こんにちは안녕하세요简体中文
+          こんにちは안녕하세요简体中文こんにちは안녕하
+          세요简体中文こんにちは안녕하세요
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using cwd outputs warnings without stdout \`TTY\` 1`] = `
 "path/to/file.css
- 1:1  ×  Unexpected foo  bar
+  1:1  ×  Unexpected foo  bar
 
-1 problem (1 error, 0 warnings)"
+× 1 problem (1 error, 0 warnings)"
 `;
 
 exports[`stringFormatter using cwd removes rule name from warning text 1`] = `
 "path/to/file.css
- 1:1  ‼  Unexpected foo  rule-name
+  1:1  ‼  Unexpected foo  rule-name
 
-1 problem (0 errors, 1 warning)"
+‼ 1 problem (0 errors, 1 warning)"
 `;
