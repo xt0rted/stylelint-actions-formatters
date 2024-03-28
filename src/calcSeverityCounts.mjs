@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.0.0/lib/formatters/calcSeverityCounts.mjs
+ * https://github.com/stylelint/stylelint/blob/16.0.1/lib/formatters/calcSeverityCounts.mjs
  */
 /**
  * @typedef {import('stylelint').Severity} Severity

@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.0.0/lib/testUtils/getCleanOutput.mjs
+ * https://github.com/stylelint/stylelint/blob/16.0.1/lib/testUtils/getCleanOutput.mjs
  */
 import stripAnsi from 'strip-ansi';
 

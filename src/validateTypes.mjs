@@ -1,5 +1,5 @@
 /**
- * https://github.com/stylelint/stylelint/blob/16.0.0/lib/utils/validateTypes.mjs
+ * https://github.com/stylelint/stylelint/blob/16.0.1/lib/utils/validateTypes.mjs
  */
 import { isPlainObject as _isPlainObject } from 'is-plain-object';
 
