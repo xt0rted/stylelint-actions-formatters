@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "npm run test:string && npm run test:verbose",
-    "test:string": "stylelint *.css --no-color --custom-formatter=../src/stringFormatter.mjs & exit 0",
-    "test:verbose": "stylelint *.css --no-color --custom-formatter=../src/verboseFormatter.mjs & exit 0"
+    "test:string": "stylelint *.css --no-color --custom-formatter=../src/stringFormatter.mjs",
+    "test:verbose": "stylelint *.css --no-color --custom-formatter=../src/verboseFormatter.mjs"
   },
   "devDependencies": {
     "stylelint": "16.3.1"
