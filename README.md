@@ -25,3 +25,4 @@ It also has a peer dependency on that version.
 ```
 
 > Note: If you're not running on GitHub Actions then these reporters will function the same as the ones that ship with Stylelint.
+
