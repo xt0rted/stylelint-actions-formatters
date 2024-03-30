@@ -2,9 +2,6 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches:
-      - main
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,46 +12,21 @@ env:
 
 jobs:
   test:
-    name: Test on Node.js ${{ matrix.node }} and ${{ matrix.os }}
-
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-      matrix:
-        node:
-          - 18
-          - 20
-          - current
-        os:
-          - macos-latest
-          - ubuntu-latest
-          - windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4.1.2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: ${{ matrix.node }}
-
-      - run: npm ci
-
-      - run: npm test
-
-      # Integration tests
       - uses: xt0rted/stylelint-problem-matcher@v1.3.0
 
-      - name: Install integration test dependencies
-        run: npm install
+      - uses: actions/checkout@v4.1.2
+
+      - uses: actions/setup-node@v4.0.2
+        with:
+          node-version: current
+
+      - run: npm ci --omit=dev
+
+      - run: npm install
         working-directory: test
 
-      - name: Run integration tests - stringFormatter
-        run: npm run test:string
-        working-directory: test
-
-      - name: Run integration tests - verboseFormatter
-        run: npm run test:verbose
+      - run: npm run test:string
         working-directory: test

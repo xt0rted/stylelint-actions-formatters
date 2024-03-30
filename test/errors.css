@@ -1,1 +1,9 @@
 .class1 {}
+.class1 {}
+
+.class2 {
+    color: red;
+    /**/
+}
+
+.firstClass .secondClass {}
