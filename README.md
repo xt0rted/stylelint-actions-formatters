@@ -15,13 +15,13 @@ It also has a peer dependency on that version.
 ### String formatter
 
 ```console
- stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters
+ stylelint "scss/**/*.scss" --custom-formatter=stylelint-actions-formatters
 ```
 
 ### Verbose formatter
 
 ```console
- stylelint "scss/**/*.scss" --custom-formatter=node_modules/stylelint-actions-formatters/src/verboseFormatter.mjs
+ stylelint "scss/**/*.scss" --custom-formatter=stylelint-actions-formatters/src/verboseFormatter.mjs
 ```
 
 > Note: If you're not running on GitHub Actions then these reporters will function the same as the ones that ship with Stylelint.

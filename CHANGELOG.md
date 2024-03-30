@@ -32,6 +32,8 @@
 
 - Synced code with [stylelint 16.0.0](https://github.com/stylelint/stylelint/releases/tag/16.0.0)
 - Migrated to ESM and changed `.js` extensions to `.mjs`
+    - Loading the string formatter: `--custom-formatter=stylelint-actions-formatters`
+    - Loading the verbose formatter: `--custom-formatter=stylelint-actions-formatters/src/verboseFormatter.mjs`
 
 ## [15.11.0](https://github.com/xt0rted/stylelint-actions-formatters/compare/v15.10.3...v15.11.0) - 2023-12-28
 
